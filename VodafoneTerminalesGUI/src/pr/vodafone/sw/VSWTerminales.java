@@ -2,22 +2,25 @@ package pr.vodafone.sw;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.rmi.RemoteException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import javax.swing.SwingUtilities;
+
+import org.apache.axis2.AxisFault;
+
+import pr.vodafone.dao.dto.xsd.Terminal;
 
 
 /**
@@ -55,6 +58,7 @@ public class VSWTerminales extends javax.swing.JFrame {
 	private JTextField cajaMarca;
 	private JPanel jPanel3;
 	private JPanel jPanel2;
+	private EditorTerminalesStub stub;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -247,10 +251,63 @@ public class VSWTerminales extends javax.swing.JFrame {
 		    //add your error handling code here
 			e.printStackTrace();
 		}
-	}
-	
-	private void botonEditar(){
 		
+		try {
+			stub = new EditorTerminalesStub("http://localhost:8080/axis2/services/EditorTerminales");
+		} catch (AxisFault e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		obtenerTerminales();
+	}
+
+	private void obtenerTerminales() {
+		ObtenerTerminales ot = new ObtenerTerminales();
+		
+		ObtenerTerminalesResponse otr;
+		try {
+			otr = stub.obtenerTerminales(ot);	
+			Terminal[] arrayTerminales = otr.get_return();
+			DefaultTableModel tableModel = (DefaultTableModel) tablaTerminales.getModel();
+			for(int i=0;i<arrayTerminales.length;i++)
+			{
+				String[] terminal = {arrayTerminales[i].getIdTerminal(),arrayTerminales[i].getMarca(), arrayTerminales[i].getModelo(), arrayTerminales[i].getPrecio()+""};
+				tableModel.insertRow(i, terminal);
+			}
+			
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private void botonEditar(){
+		ActualizarTerminal at = new ActualizarTerminal();
+		Terminal t = new Terminal();
+		DefaultTableModel tableModel = (DefaultTableModel) tablaTerminales.getModel();
+		int selectedRow = tablaTerminales.getSelectedRow();
+		
+		String id = (String) tableModel.getValueAt(selectedRow, 0); 
+		String marca = (String) tableModel.getValueAt(selectedRow, 1); 
+		String modelo = (String) tableModel.getValueAt(selectedRow, 2); 
+		float precio = Float.parseFloat((String) tableModel.getValueAt(selectedRow, 3)); 
+		t.setIdTerminal(id);
+		t.setMarca(marca);
+		t.setModelo(modelo);
+		t.setPrecio(precio);
+		
+		at.setTerminal(t);
+		ActualizarTerminalResponse atr;
+		try {
+			System.out.println("Actualizando terminal con id = "+t.getIdTerminal());
+			atr = stub.actualizarTerminal(at);	
+			//No actualiza, hay que echarle un ojo
+			System.out.println("Terminal actualizado = " + atr.get_return());
+			
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	private void botonCargar(){		
@@ -263,7 +320,20 @@ public class VSWTerminales extends javax.swing.JFrame {
 	}
 	
 	private void botonEnviar(){
+		InsertarTerminal it = new InsertarTerminal();
+		Terminal t = new Terminal();
+		//Falta insertar atributos del terminal
 		
+		it.setTerminal(t);
+		InsertarTerminalResponse itr;
+		try {
+			itr = stub.insertarTerminal(it);	
+			System.out.println("Terminal insertado = " + itr.get_return());
+			
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	private void botonCerrar(){
 		System.exit(0);
