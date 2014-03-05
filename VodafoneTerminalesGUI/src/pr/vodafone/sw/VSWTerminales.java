@@ -1,4 +1,5 @@
 package pr.vodafone.sw;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -8,6 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -22,19 +24,16 @@ import org.apache.axis2.AxisFault;
 
 import pr.vodafone.dao.dto.xsd.Terminal;
 
-
 /**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
+ * This code was edited or generated using CloudGarden's Jigloo SWT/Swing GUI
+ * Builder, which is free for non-commercial use. If Jigloo is being used
+ * commercially (ie, by a corporation, company or business for any purpose
+ * whatever) then you should purchase a license for each developer using Jigloo.
+ * Please visit www.cloudgarden.com for details. Use of Jigloo implies
+ * acceptance of these licensing terms. A COMMERCIAL LICENSE HAS NOT BEEN
+ * PURCHASED FOR THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED LEGALLY FOR
+ * ANY CORPORATE OR COMMERCIAL PURPOSE.
+ */
 public class VSWTerminales extends javax.swing.JFrame {
 	private JTextField cajaId;
 	private JLabel jLabel3;
@@ -61,8 +60,8 @@ public class VSWTerminales extends javax.swing.JFrame {
 	private EditorTerminalesStub stub;
 
 	/**
-	* Auto-generated main method to display this JFrame
-	*/
+	 * Auto-generated main method to display this JFrame
+	 */
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -72,32 +71,37 @@ public class VSWTerminales extends javax.swing.JFrame {
 			}
 		});
 	}
-	
+
 	public VSWTerminales() {
 		super();
 		initGUI();
 	}
-	
+
 	private void initGUI() {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
-			this.setTitle("Gesti�n de Alta de Terminales");
+			this.setTitle("Gesti�n de Alta de Terminales");
 			{
 				jPanel2 = new JPanel();
 				getContentPane().add(jPanel2);
-				jPanel2.setFont(new java.awt.Font("Dialog",0,8));
+				jPanel2.setFont(new java.awt.Font("Dialog", 0, 8));
 				jPanel2.setBounds(13, 12, 360, 214);
 				jPanel2.setLayout(null);
-				jPanel2.setBorder(BorderFactory.createTitledBorder(null, "Terminales Recibidos", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI",1,10), new java.awt.Color(0,0,0)));				
+				jPanel2.setBorder(BorderFactory
+						.createTitledBorder(null, "Terminales Recibidos",
+								TitledBorder.LEADING,
+								TitledBorder.DEFAULT_POSITION,
+								new java.awt.Font("Segoe UI", 1, 10),
+								new java.awt.Color(0, 0, 0)));
 				{
 					jScrollPane1 = new JScrollPane();
 					jPanel2.add(jScrollPane1);
 					jScrollPane1.setBounds(12, 24, 336, 152);
 					{
-						TableModel jTable1Model = 
-							new DefaultTableModel(
-									new String[] { "Id", "Marca", "Modelo", "Precio" }, 6);
+						TableModel jTable1Model = new DefaultTableModel(
+								new String[] { "Id", "Marca", "Modelo",
+										"Precio" }, 6);
 						tablaTerminales = new JTable();
 						jScrollPane1.setViewportView(tablaTerminales);
 						tablaTerminales.setModel(jTable1Model);
@@ -110,8 +114,11 @@ public class VSWTerminales extends javax.swing.JFrame {
 					botonEditar.setBounds(272, 182, 76, 23);
 					botonEditar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out.println("botonEditar.actionPerformed, event="+evt);
-							//TODO add your code for botonEditar.actionPerformed
+							System.out
+									.println("botonEditar.actionPerformed, event="
+											+ evt);
+							// TODO add your code for
+							// botonEditar.actionPerformed
 							botonEditar();
 						}
 					});
@@ -123,8 +130,11 @@ public class VSWTerminales extends javax.swing.JFrame {
 					botonCargar.setBounds(100, 182, 165, 23);
 					botonCargar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out.println("botonCargar.actionPerformed, event="+evt);
-							//TODO add your code for botonEditar.actionPerformed
+							System.out
+									.println("botonCargar.actionPerformed, event="
+											+ evt);
+							// TODO add your code for
+							// botonEditar.actionPerformed
 							botonCargar();
 						}
 					});
@@ -133,10 +143,14 @@ public class VSWTerminales extends javax.swing.JFrame {
 			{
 				jPanel3 = new JPanel();
 				getContentPane().add(jPanel3);
-				jPanel3.setFont(new java.awt.Font("Dialog",0,8));
+				jPanel3.setFont(new java.awt.Font("Dialog", 0, 8));
 				jPanel3.setBounds(13, 232, 359, 254);
 				jPanel3.setLayout(null);
-				jPanel3.setBorder(BorderFactory.createTitledBorder(null, "Asignaci�n de Precios Promocionales", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI",1,10), new java.awt.Color(0,0,0)));
+				jPanel3.setBorder(BorderFactory.createTitledBorder(null,
+						"Asignaci�n de Precios Promocionales",
+						TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
+						new java.awt.Font("Segoe UI", 1, 10),
+						new java.awt.Color(0, 0, 0)));
 				{
 					jLabel3 = new JLabel();
 					jPanel3.add(jLabel3);
@@ -192,8 +206,11 @@ public class VSWTerminales extends javax.swing.JFrame {
 					botonEnviar.setBounds(274, 222, 74, 23);
 					botonEnviar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out.println("botonEnviar.actionPerformed, event="+evt);
-							//TODO add your code for botonEnviar.actionPerformed
+							System.out
+									.println("botonEnviar.actionPerformed, event="
+											+ evt);
+							// TODO add your code for
+							// botonEnviar.actionPerformed
 							botonEnviar();
 						}
 					});
@@ -239,8 +256,10 @@ public class VSWTerminales extends javax.swing.JFrame {
 				botonCerrar.setBounds(157, 492, 79, 23);
 				botonCerrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						System.out.println("botonCerrar.actionPerformed, event="+evt);
-						//TODO add your code for botonCerrar.actionPerformed
+						System.out
+								.println("botonCerrar.actionPerformed, event="
+										+ evt);
+						// TODO add your code for botonCerrar.actionPerformed
 						botonCerrar();
 					}
 				});
@@ -248,12 +267,13 @@ public class VSWTerminales extends javax.swing.JFrame {
 			pack();
 			this.setSize(400, 559);
 		} catch (Exception e) {
-		    //add your error handling code here
+			// add your error handling code here
 			e.printStackTrace();
 		}
-		
+
 		try {
-			stub = new EditorTerminalesStub("http://localhost:8080/axis2/services/EditorTerminales");
+			stub = new EditorTerminalesStub(
+					"http://localhost:8080/axis2/services/EditorTerminales");
 		} catch (AxisFault e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -263,54 +283,55 @@ public class VSWTerminales extends javax.swing.JFrame {
 
 	private void obtenerTerminales() {
 		ObtenerTerminales ot = new ObtenerTerminales();
-		
+
 		ObtenerTerminalesResponse otr;
 		try {
-			otr = stub.obtenerTerminales(ot);	
+			otr = stub.obtenerTerminales(ot);
 			Terminal[] arrayTerminales = otr.get_return();
-			DefaultTableModel tableModel = (DefaultTableModel) tablaTerminales.getModel();
-			for(int i=0;i<arrayTerminales.length;i++)
-			{
-				String[] terminal = {arrayTerminales[i].getIdTerminal(),arrayTerminales[i].getMarca(), arrayTerminales[i].getModelo(), arrayTerminales[i].getPrecio()+""};
+			if (arrayTerminales == null) {
+				arrayTerminales = new Terminal[] {};
+			}
+			DefaultTableModel tableModel = (DefaultTableModel) tablaTerminales
+					.getModel();
+			for (int i = 0; i < arrayTerminales.length; i++) {
+				String[] terminal = { arrayTerminales[i].getIdTerminal(),
+						arrayTerminales[i].getMarca(),
+						arrayTerminales[i].getModelo(),
+						arrayTerminales[i].getPrecio() + "" };
 				tableModel.insertRow(i, terminal);
 			}
-			
+
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	private void botonEditar(){
-		ActualizarTerminal at = new ActualizarTerminal();
-		Terminal t = new Terminal();
-		DefaultTableModel tableModel = (DefaultTableModel) tablaTerminales.getModel();
+	private void botonEditar() {
+		DefaultTableModel tableModel = (DefaultTableModel) tablaTerminales
+				.getModel();
 		int selectedRow = tablaTerminales.getSelectedRow();
-		
-		String id = (String) tableModel.getValueAt(selectedRow, 0); 
-		String marca = (String) tableModel.getValueAt(selectedRow, 1); 
-		String modelo = (String) tableModel.getValueAt(selectedRow, 2); 
-		float precio = Float.parseFloat((String) tableModel.getValueAt(selectedRow, 3)); 
-		t.setIdTerminal(id);
-		t.setMarca(marca);
-		t.setModelo(modelo);
-		t.setPrecio(precio);
-		
-		at.setTerminal(t);
-		ActualizarTerminalResponse atr;
-		try {
-			System.out.println("Actualizando terminal con id = "+t.getIdTerminal());
-			atr = stub.actualizarTerminal(at);	
-			//No actualiza, hay que echarle un ojo
-			System.out.println("Terminal actualizado = " + atr.get_return());
-			
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (selectedRow < 0) {
+			JOptionPane.showMessageDialog(this,
+					"No has seleccionado ningún terminal para editar",
+					"Atención", JOptionPane.WARNING_MESSAGE);
+			return;
 		}
+
+		String id = (String) tableModel.getValueAt(selectedRow, 0);
+		String marca = (String) tableModel.getValueAt(selectedRow, 1);
+		String modelo = (String) tableModel.getValueAt(selectedRow, 2);
+		float precio = Float.parseFloat((String) tableModel.getValueAt(
+				selectedRow, 3));
+
+		cajaId.setText(id);
+		cajaMarca.setText(marca);
+		cajaModelo.setText(modelo);
+		cajaPrecio.setText(precio + "");
+
 	}
-	
-	private void botonCargar(){		
+
+	private void botonCargar() {
 		JFileChooser jfc = new JFileChooser();
 		int returnVal = jfc.showOpenDialog(this);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -318,24 +339,67 @@ public class VSWTerminales extends javax.swing.JFrame {
 			System.out.println(fichero.getAbsolutePath());
 		}
 	}
-	
-	private void botonEnviar(){
-		InsertarTerminal it = new InsertarTerminal();
+
+	private void botonEnviar() {
+		ActualizarTerminal at = new ActualizarTerminal();
 		Terminal t = new Terminal();
-		//Falta insertar atributos del terminal
-		
-		it.setTerminal(t);
-		InsertarTerminalResponse itr;
+		DefaultTableModel tableModel = (DefaultTableModel) tablaTerminales
+				.getModel();
+		int selectedRow = tablaTerminales.getSelectedRow();
+		if (selectedRow < 0) {
+			JOptionPane.showMessageDialog(this,
+					"No estás editando ningún terminal", "Atención",
+					JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+
+		String id = (String) tableModel.getValueAt(selectedRow, 0);
+		String marca = (String) tableModel.getValueAt(selectedRow, 1);
+		String modelo = (String) tableModel.getValueAt(selectedRow, 2);
+		float precio = Float.parseFloat((String) tableModel.getValueAt(
+				selectedRow, 3));
+		t.setIdTerminal(id);
+		t.setMarca(marca);
+		t.setModelo(modelo);
+		t.setPrecio(precio);
 		try {
-			itr = stub.insertarTerminal(it);	
-			System.out.println("Terminal insertado = " + itr.get_return());
-			
+			t.setPromoBronce(Float.parseFloat(cajaBronce.getText()));
+		} catch (NumberFormatException ex) {
+			JOptionPane.showMessageDialog(this,
+					"El precio Bronce debe ser un número válido", "Error",
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		try {
+			t.setPromoPlata(Float.parseFloat(cajaPlata.getText()));
+		} catch (NumberFormatException ex) {
+			JOptionPane.showMessageDialog(this,
+					"El precio Plata debe ser un número válido", "Error",
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		try {
+			t.setPromoOro(Float.parseFloat(cajaOro.getText()));
+		} catch (NumberFormatException ex) {
+			JOptionPane.showMessageDialog(this,
+					"El precio Oro debe ser un número válido", "Error",
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		at.setTerminal(t);
+		ActualizarTerminalResponse atr;
+		try {
+			atr = stub.actualizarTerminal(at);
+			System.out.println("Terminal actualizado = " + atr.get_return());
+
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	private void botonCerrar(){
+
+	private void botonCerrar() {
 		System.exit(0);
 	}
 }
