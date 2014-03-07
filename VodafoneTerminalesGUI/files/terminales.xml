@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<terminales>
+	<listaTerminales>
+		<terminal>
+			<id>1</id>
+			<marca>Samsung</marca>
+			<modelo>Galaxy S3</modelo>
+			<precio>500</precio>
+		</terminal>
+		<terminal>
+			<id>5</id>
+			<marca>Apple</marca>
+			<modelo>Iphone 5S</modelo>
+			<precio>670</precio>
+		</terminal>
+	</listaTerminales>
+</terminales>
