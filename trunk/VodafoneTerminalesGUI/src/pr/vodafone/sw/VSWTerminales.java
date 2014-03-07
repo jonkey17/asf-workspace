@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -19,10 +20,14 @@ import javax.swing.WindowConstants;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 import org.apache.axis2.AxisFault;
 
 import pr.vodafone.dao.dto.xsd.Terminal;
+import pr.vodafone.data.Terminales;
 
 /**
  * This code was edited or generated using CloudGarden's Jigloo SWT/Swing GUI
@@ -278,7 +283,6 @@ public class VSWTerminales extends javax.swing.JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		obtenerTerminales();
 	}
 
 	private void obtenerTerminales() {
@@ -332,16 +336,44 @@ public class VSWTerminales extends javax.swing.JFrame {
 	}
 
 	private void botonCargar() {
+		
 		JFileChooser jfc = new JFileChooser();
 		int returnVal = jfc.showOpenDialog(this);
+
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
-			File fichero = jfc.getSelectedFile();
-			System.out.println(fichero.getAbsolutePath());
+			try {
+				File fichero = jfc.getSelectedFile();
+				System.out.println(fichero.getAbsolutePath());
+
+				JAXBContext context = JAXBContext.newInstance(Terminales.class);
+				Unmarshaller um = context.createUnmarshaller();
+
+				Terminales terminales = (Terminales) um.unmarshal(fichero);
+				
+				System.out.println(terminales.getListaTerminales().get(0).getMarca());
+
+				DefaultTableModel tableModel = (DefaultTableModel) tablaTerminales
+						.getModel();
+				for (int i = 0; i < terminales.getListaTerminales().size(); i++) {
+					String[] terminal = {
+							terminales.getListaTerminales().get(i).getId() + "",
+							terminales.getListaTerminales().get(i).getMarca(),
+							terminales.getListaTerminales().get(i).getModelo(),
+							terminales.getListaTerminales().get(i).getPrecio() + "" };
+					tableModel.insertRow(i, terminal);
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(this,
+						"Error al cargar el archivo, vuelva a intentarlo",
+						"Error", JOptionPane.ERROR_MESSAGE);
+			}
 		}
 	}
 
 	private void botonEnviar() {
-		ActualizarTerminal at = new ActualizarTerminal();
+		InsertarTerminal at = new InsertarTerminal();
 		Terminal t = new Terminal();
 		DefaultTableModel tableModel = (DefaultTableModel) tablaTerminales
 				.getModel();
@@ -388,9 +420,9 @@ public class VSWTerminales extends javax.swing.JFrame {
 		}
 
 		at.setTerminal(t);
-		ActualizarTerminalResponse atr;
+		InsertarTerminalResponse atr;
 		try {
-			atr = stub.actualizarTerminal(at);
+			atr = stub.insertarTerminal(at);
 			System.out.println("Terminal actualizado = " + atr.get_return());
 
 		} catch (RemoteException e) {

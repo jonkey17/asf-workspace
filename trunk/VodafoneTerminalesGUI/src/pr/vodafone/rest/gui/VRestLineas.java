@@ -1,4 +1,5 @@
 package pr.vodafone.rest.gui;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
@@ -16,19 +17,16 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.SwingUtilities;
 
-
 /**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
+ * This code was edited or generated using CloudGarden's Jigloo SWT/Swing GUI
+ * Builder, which is free for non-commercial use. If Jigloo is being used
+ * commercially (ie, by a corporation, company or business for any purpose
+ * whatever) then you should purchase a license for each developer using Jigloo.
+ * Please visit www.cloudgarden.com for details. Use of Jigloo implies
+ * acceptance of these licensing terms. A COMMERCIAL LICENSE HAS NOT BEEN
+ * PURCHASED FOR THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED LEGALLY FOR
+ * ANY CORPORATE OR COMMERCIAL PURPOSE.
+ */
 public class VRestLineas extends javax.swing.JFrame {
 	private JPanel jPanel1;
 	private JCheckBox checkActiva;
@@ -61,8 +59,8 @@ public class VRestLineas extends javax.swing.JFrame {
 	private JLabel jLabel1;
 
 	/**
-	* Auto-generated main method to display this JFrame
-	*/
+	 * Auto-generated main method to display this JFrame
+	 */
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -72,24 +70,29 @@ public class VRestLineas extends javax.swing.JFrame {
 			}
 		});
 	}
-	
+
 	public VRestLineas() {
 		super();
 		initGUI();
 	}
-	
+
 	private void initGUI() {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
-			this.setTitle("Gestión de Lineas");
+			this.setTitle("Gestiï¿½n de Lineas");
 			{
 				jPanel1 = new JPanel();
 				getContentPane().add(jPanel1);
 				jPanel1.setBounds(12, 12, 360, 116);
-				jPanel1.setFont(new java.awt.Font("Dialog",1,10));
+				jPanel1.setFont(new java.awt.Font("Dialog", 1, 10));
 				jPanel1.setLayout(null);
-				jPanel1.setBorder(BorderFactory.createTitledBorder(null, "Datos Cliente", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI",1,10), new java.awt.Color(0,0,0)));
+				jPanel1.setBorder(BorderFactory
+						.createTitledBorder(null, "Datos Cliente",
+								TitledBorder.LEADING,
+								TitledBorder.DEFAULT_POSITION,
+								new java.awt.Font("Segoe UI", 1, 10),
+								new java.awt.Color(0, 0, 0)));
 				{
 					jLabel1 = new JLabel();
 					jPanel1.add(jLabel1);
@@ -105,7 +108,7 @@ public class VRestLineas extends javax.swing.JFrame {
 				{
 					jLabel6 = new JLabel();
 					jPanel1.add(jLabel6);
-					jLabel6.setText("Dirección:");
+					jLabel6.setText("Direcciï¿½n:");
 					jLabel6.setBounds(11, 66, 62, 16);
 				}
 				{
@@ -119,45 +122,51 @@ public class VRestLineas extends javax.swing.JFrame {
 					jPanel1.add(labelDNI);
 					labelDNI.setText("xxxxxxxxxx");
 					labelDNI.setBounds(80, 22, 263, 16);
-					labelDNI.setFont(new java.awt.Font("Segoe UI",1,12));
+					labelDNI.setFont(new java.awt.Font("Segoe UI", 1, 12));
 				}
 				{
 					labelNombre = new JLabel();
 					jPanel1.add(labelNombre);
 					labelNombre.setText("xxxxxxxxxx");
 					labelNombre.setBounds(80, 44, 263, 16);
-					labelNombre.setFont(new java.awt.Font("Segoe UI",1,12));
+					labelNombre.setFont(new java.awt.Font("Segoe UI", 1, 12));
 				}
 				{
 					labelDireccion = new JLabel();
 					jPanel1.add(labelDireccion);
 					labelDireccion.setText("xxxxxxxxxx");
 					labelDireccion.setBounds(80, 66, 263, 16);
-					labelDireccion.setFont(new java.awt.Font("Segoe UI",1,12));
+					labelDireccion
+							.setFont(new java.awt.Font("Segoe UI", 1, 12));
 				}
 				{
 					labelEmail = new JLabel();
 					jPanel1.add(labelEmail);
 					labelEmail.setText("xxxxxxxxxx");
 					labelEmail.setBounds(80, 89, 263, 16);
-					labelEmail.setFont(new java.awt.Font("Segoe UI",1,12));
+					labelEmail.setFont(new java.awt.Font("Segoe UI", 1, 12));
 				}
 			}
 			{
 				jPanel2 = new JPanel();
 				getContentPane().add(jPanel2);
-				jPanel2.setFont(new java.awt.Font("Dialog",0,8));
+				jPanel2.setFont(new java.awt.Font("Dialog", 0, 8));
 				jPanel2.setBounds(13, 140, 360, 145);
 				jPanel2.setLayout(null);
-				jPanel2.setBorder(BorderFactory.createTitledBorder(null, "Líneas Contratadas", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI",1,10), new java.awt.Color(0,0,0)));
+				jPanel2.setBorder(BorderFactory
+						.createTitledBorder(null, "Lï¿½neas Contratadas",
+								TitledBorder.LEADING,
+								TitledBorder.DEFAULT_POSITION,
+								new java.awt.Font("Segoe UI", 1, 10),
+								new java.awt.Color(0, 0, 0)));
 				{
 					jScrollPane1 = new JScrollPane();
 					jPanel2.add(jScrollPane1);
 					jScrollPane1.setBounds(12, 24, 336, 84);
 					{
-						TableModel jTable1Model = 
-							new DefaultTableModel(
-									new String[] { "Teléfono", "Antiguedad", "Activa", "Promoción" }, 2);
+						TableModel jTable1Model = new DefaultTableModel(
+								new String[] { "Telï¿½fono", "Antiguedad",
+										"Activa", "Promociï¿½n" }, 2);
 						tablaLineas = new JTable();
 						jScrollPane1.setViewportView(tablaLineas);
 						tablaLineas.setModel(jTable1Model);
@@ -170,8 +179,11 @@ public class VRestLineas extends javax.swing.JFrame {
 					botonFacturas.setBounds(234, 113, 114, 23);
 					botonFacturas.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out.println("botonFacturas.actionPerformed, event="+evt);
-							//TODO add your code for botonFacturas.actionPerformed
+							System.out
+									.println("botonFacturas.actionPerformed, event="
+											+ evt);
+							// TODO add your code for
+							// botonFacturas.actionPerformed
 							botonVerFacturas();
 						}
 					});
@@ -183,8 +195,11 @@ public class VRestLineas extends javax.swing.JFrame {
 					botonEditar.setBounds(159, 113, 70, 23);
 					botonEditar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out.println("botonEditar.actionPerformed, event="+evt);
-							//TODO add your code for botonEditar.actionPerformed
+							System.out
+									.println("botonEditar.actionPerformed, event="
+											+ evt);
+							// TODO add your code for
+							// botonEditar.actionPerformed
 							botonEditar();
 						}
 					});
@@ -193,10 +208,15 @@ public class VRestLineas extends javax.swing.JFrame {
 			{
 				jPanel3 = new JPanel();
 				getContentPane().add(jPanel3);
-				jPanel3.setFont(new java.awt.Font("Dialog",0,8));
+				jPanel3.setFont(new java.awt.Font("Dialog", 0, 8));
 				jPanel3.setBounds(13, 297, 359, 173);
 				jPanel3.setLayout(null);
-				jPanel3.setBorder(BorderFactory.createTitledBorder(null, "Edición", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI",1,10), new java.awt.Color(0,0,0)));
+				jPanel3.setBorder(BorderFactory
+						.createTitledBorder(null, "Ediciï¿½n",
+								TitledBorder.LEADING,
+								TitledBorder.DEFAULT_POSITION,
+								new java.awt.Font("Segoe UI", 1, 10),
+								new java.awt.Color(0, 0, 0)));
 				{
 					jLabel3 = new JLabel();
 					jPanel3.add(jLabel3);
@@ -248,8 +268,10 @@ public class VRestLineas extends javax.swing.JFrame {
 					botonNueva.setBounds(183, 21, 78, 23);
 					botonNueva.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out.println("botonNueva.actionPerformed, event="+evt);
-							//TODO add your code for botonNueva.actionPerformed
+							System.out
+									.println("botonNueva.actionPerformed, event="
+											+ evt);
+							// TODO add your code for botonNueva.actionPerformed
 							botonNueva();
 						}
 					});
@@ -261,8 +283,11 @@ public class VRestLineas extends javax.swing.JFrame {
 					botonGuardar.setBounds(266, 21, 82, 23);
 					botonGuardar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out.println("botonGuardar.actionPerformed, event="+evt);
-							//TODO add your code for botonGuardar.actionPerformed
+							System.out
+									.println("botonGuardar.actionPerformed, event="
+											+ evt);
+							// TODO add your code for
+							// botonGuardar.actionPerformed
 							botonGuardar();
 						}
 					});
@@ -270,7 +295,7 @@ public class VRestLineas extends javax.swing.JFrame {
 				{
 					jLabel9 = new JLabel();
 					jPanel3.add(jLabel9);
-					jLabel9.setText("Promoción:");
+					jLabel9.setText("Promociï¿½n:");
 					jLabel9.setBounds(10, 138, 71, 16);
 				}
 				{
@@ -292,8 +317,10 @@ public class VRestLineas extends javax.swing.JFrame {
 				botonCerrar.setBounds(295, 476, 78, 23);
 				botonCerrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						System.out.println("botonCerrar.actionPerformed, event="+evt);
-						//TODO add your code for botonCerrar.actionPerformed
+						System.out
+								.println("botonCerrar.actionPerformed, event="
+										+ evt);
+						// TODO add your code for botonCerrar.actionPerformed
 						botonCerrar();
 					}
 				});
@@ -301,24 +328,28 @@ public class VRestLineas extends javax.swing.JFrame {
 			pack();
 			this.setSize(400, 544);
 		} catch (Exception e) {
-		    //add your error handling code here
+			// add your error handling code here
 			e.printStackTrace();
 		}
 	}
-	
-	private void botonEditar(){
-		
+
+	private void botonEditar() {
+
 	}
-	private void botonVerFacturas(){
-		
+
+	private void botonVerFacturas() {
+
 	}
-	private void botonNueva(){
-		
+
+	private void botonNueva() {
+
 	}
-	private void botonGuardar(){
-		
+
+	private void botonGuardar() {
+
 	}
-	private void botonCerrar(){
-		
+
+	private void botonCerrar() {
+
 	}
 }
