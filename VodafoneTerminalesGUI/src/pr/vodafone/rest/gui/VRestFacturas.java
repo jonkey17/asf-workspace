@@ -1,4 +1,5 @@
 package pr.vodafone.rest.gui;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
@@ -16,19 +17,16 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.SwingUtilities;
 
-
 /**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
+ * This code was edited or generated using CloudGarden's Jigloo SWT/Swing GUI
+ * Builder, which is free for non-commercial use. If Jigloo is being used
+ * commercially (ie, by a corporation, company or business for any purpose
+ * whatever) then you should purchase a license for each developer using Jigloo.
+ * Please visit www.cloudgarden.com for details. Use of Jigloo implies
+ * acceptance of these licensing terms. A COMMERCIAL LICENSE HAS NOT BEEN
+ * PURCHASED FOR THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED LEGALLY FOR
+ * ANY CORPORATE OR COMMERCIAL PURPOSE.
+ */
 public class VRestFacturas extends javax.swing.JFrame {
 	private JPanel jPanel1;
 	private JLabel labelDatos;
@@ -62,8 +60,8 @@ public class VRestFacturas extends javax.swing.JFrame {
 	private JLabel jLabel1;
 
 	/**
-	* Auto-generated main method to display this JFrame
-	*/
+	 * Auto-generated main method to display this JFrame
+	 */
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -73,28 +71,33 @@ public class VRestFacturas extends javax.swing.JFrame {
 			}
 		});
 	}
-	
+
 	public VRestFacturas() {
 		super();
 		initGUI();
 	}
-	
+
 	private void initGUI() {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
-			this.setTitle("Gestión de Facturas");
+			this.setTitle("Gestiï¿½n de Facturas");
 			{
 				jPanel1 = new JPanel();
 				getContentPane().add(jPanel1);
 				jPanel1.setBounds(12, 12, 360, 116);
-				jPanel1.setFont(new java.awt.Font("Dialog",1,10));
+				jPanel1.setFont(new java.awt.Font("Dialog", 1, 10));
 				jPanel1.setLayout(null);
-				jPanel1.setBorder(BorderFactory.createTitledBorder(null, "Datos Línea", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI",1,10), new java.awt.Color(0,0,0)));
+				jPanel1.setBorder(BorderFactory
+						.createTitledBorder(null, "Datos Lï¿½nea",
+								TitledBorder.LEADING,
+								TitledBorder.DEFAULT_POSITION,
+								new java.awt.Font("Segoe UI", 1, 10),
+								new java.awt.Color(0, 0, 0)));
 				{
 					jLabel1 = new JLabel();
 					jPanel1.add(jLabel1);
-					jLabel1.setText("Teléfono:");
+					jLabel1.setText("Telï¿½fono:");
 					jLabel1.setBounds(11, 22, 70, 16);
 				}
 				{
@@ -120,33 +123,34 @@ public class VRestFacturas extends javax.swing.JFrame {
 					jPanel1.add(labelTelefono);
 					labelTelefono.setText("xxxxxxxxxx");
 					labelTelefono.setBounds(92, 22, 102, 16);
-					labelTelefono.setFont(new java.awt.Font("Segoe UI",1,12));
+					labelTelefono.setFont(new java.awt.Font("Segoe UI", 1, 12));
 				}
 				{
 					labelAntiguedad = new JLabel();
 					jPanel1.add(labelAntiguedad);
 					labelAntiguedad.setText("xxxxxxxxxx");
 					labelAntiguedad.setBounds(92, 44, 102, 16);
-					labelAntiguedad.setFont(new java.awt.Font("Segoe UI",1,12));
+					labelAntiguedad
+							.setFont(new java.awt.Font("Segoe UI", 1, 12));
 				}
 				{
 					labelVoz = new JLabel();
 					jPanel1.add(labelVoz);
 					labelVoz.setText("xxxxxxxxxx");
 					labelVoz.setBounds(92, 66, 102, 16);
-					labelVoz.setFont(new java.awt.Font("Segoe UI",1,12));
+					labelVoz.setFont(new java.awt.Font("Segoe UI", 1, 12));
 				}
 				{
 					labelDatos = new JLabel();
 					jPanel1.add(labelDatos);
 					labelDatos.setText("xxxxxxxxxx");
 					labelDatos.setBounds(92, 89, 102, 16);
-					labelDatos.setFont(new java.awt.Font("Segoe UI",1,12));
+					labelDatos.setFont(new java.awt.Font("Segoe UI", 1, 12));
 				}
 				{
 					jLabel10 = new JLabel();
 					jPanel1.add(jLabel10);
-					jLabel10.setText("Promoción:");
+					jLabel10.setText("Promociï¿½n:");
 					jLabel10.setBounds(195, 22, 65, 16);
 				}
 				{
@@ -160,31 +164,37 @@ public class VRestFacturas extends javax.swing.JFrame {
 					jPanel1.add(labelPromocion);
 					labelPromocion.setText("xxxxxxxxxx");
 					labelPromocion.setBounds(263, 22, 87, 16);
-					labelPromocion.setFont(new java.awt.Font("Segoe UI",1,12));
+					labelPromocion
+							.setFont(new java.awt.Font("Segoe UI", 1, 12));
 				}
 				{
 					labelActiva = new JLabel();
 					jPanel1.add(labelActiva);
 					labelActiva.setText("Si");
 					labelActiva.setBounds(263, 44, 87, 16);
-					labelActiva.setFont(new java.awt.Font("Segoe UI",1,12));
+					labelActiva.setFont(new java.awt.Font("Segoe UI", 1, 12));
 				}
 			}
 			{
 				jPanel2 = new JPanel();
 				getContentPane().add(jPanel2);
-				jPanel2.setFont(new java.awt.Font("Dialog",0,8));
+				jPanel2.setFont(new java.awt.Font("Dialog", 0, 8));
 				jPanel2.setBounds(13, 140, 360, 145);
 				jPanel2.setLayout(null);
-				jPanel2.setBorder(BorderFactory.createTitledBorder(null, "Facturas Disponibles", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI",1,10), new java.awt.Color(0,0,0)));
+				jPanel2.setBorder(BorderFactory
+						.createTitledBorder(null, "Facturas Disponibles",
+								TitledBorder.LEADING,
+								TitledBorder.DEFAULT_POSITION,
+								new java.awt.Font("Segoe UI", 1, 10),
+								new java.awt.Color(0, 0, 0)));
 				{
 					jScrollPane1 = new JScrollPane();
 					jPanel2.add(jScrollPane1);
 					jScrollPane1.setBounds(12, 24, 336, 84);
 					{
-						TableModel jTable1Model = 
-							new DefaultTableModel(
-									new String[] { "Id", "Fecha", "Periodo", "Importe" }, 2);
+						TableModel jTable1Model = new DefaultTableModel(
+								new String[] { "Id", "Fecha", "Periodo",
+										"Importe" }, 2);
 						tablaFacturas = new JTable();
 						jScrollPane1.setViewportView(tablaFacturas);
 						tablaFacturas.setModel(jTable1Model);
@@ -197,8 +207,11 @@ public class VRestFacturas extends javax.swing.JFrame {
 					botonBorrar.setBounds(266, 113, 82, 23);
 					botonBorrar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out.println("botonBorrar.actionPerformed, event="+evt);
-							//TODO add your code for botonBorrar.actionPerformed
+							System.out
+									.println("botonBorrar.actionPerformed, event="
+											+ evt);
+							// TODO add your code for
+							// botonBorrar.actionPerformed
 							botonBorrar();
 						}
 					});
@@ -210,8 +223,11 @@ public class VRestFacturas extends javax.swing.JFrame {
 					botonEditar.setBounds(185, 113, 76, 23);
 					botonEditar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out.println("botonEditar.actionPerformed, event="+evt);
-							//TODO add your code for botonEditar.actionPerformed
+							System.out
+									.println("botonEditar.actionPerformed, event="
+											+ evt);
+							// TODO add your code for
+							// botonEditar.actionPerformed
 							botonEditar();
 						}
 					});
@@ -220,10 +236,15 @@ public class VRestFacturas extends javax.swing.JFrame {
 			{
 				jPanel3 = new JPanel();
 				getContentPane().add(jPanel3);
-				jPanel3.setFont(new java.awt.Font("Dialog",0,8));
+				jPanel3.setFont(new java.awt.Font("Dialog", 0, 8));
 				jPanel3.setBounds(13, 297, 359, 145);
 				jPanel3.setLayout(null);
-				jPanel3.setBorder(BorderFactory.createTitledBorder(null, "Edición", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI",1,10), new java.awt.Color(0,0,0)));
+				jPanel3.setBorder(BorderFactory
+						.createTitledBorder(null, "Ediciï¿½n",
+								TitledBorder.LEADING,
+								TitledBorder.DEFAULT_POSITION,
+								new java.awt.Font("Segoe UI", 1, 10),
+								new java.awt.Color(0, 0, 0)));
 				{
 					jLabel3 = new JLabel();
 					jPanel3.add(jLabel3);
@@ -275,8 +296,10 @@ public class VRestFacturas extends javax.swing.JFrame {
 					botonNueva.setBounds(181, 21, 78, 23);
 					botonNueva.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out.println("botonNueva.actionPerformed, event="+evt);
-							//TODO add your code for botonNueva.actionPerformed
+							System.out
+									.println("botonNueva.actionPerformed, event="
+											+ evt);
+							// TODO add your code for botonNueva.actionPerformed
 							botonNueva();
 						}
 					});
@@ -288,8 +311,11 @@ public class VRestFacturas extends javax.swing.JFrame {
 					botonGuardar.setBounds(264, 21, 84, 23);
 					botonGuardar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out.println("botonGuardar.actionPerformed, event="+evt);
-							//TODO add your code for botonGuardar.actionPerformed
+							System.out
+									.println("botonGuardar.actionPerformed, event="
+											+ evt);
+							// TODO add your code for
+							// botonGuardar.actionPerformed
 							botonGuardar();
 						}
 					});
@@ -302,8 +328,10 @@ public class VRestFacturas extends javax.swing.JFrame {
 				botonCerrar.setBounds(294, 450, 79, 23);
 				botonCerrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						System.out.println("botonCerrar.actionPerformed, event="+evt);
-						//TODO add your code for botonCerrar.actionPerformed
+						System.out
+								.println("botonCerrar.actionPerformed, event="
+										+ evt);
+						// TODO add your code for botonCerrar.actionPerformed
 						botonCerrar();
 					}
 				});
@@ -311,24 +339,28 @@ public class VRestFacturas extends javax.swing.JFrame {
 			pack();
 			this.setSize(400, 521);
 		} catch (Exception e) {
-		    //add your error handling code here
+			// add your error handling code here
 			e.printStackTrace();
 		}
 	}
-	
-	private void botonEditar(){
-		
+
+	private void botonEditar() {
+
 	}
-	private void botonBorrar(){
-		
+
+	private void botonBorrar() {
+
 	}
-	private void botonNueva(){
-		
+
+	private void botonNueva() {
+
 	}
-	private void botonGuardar(){
-		
+
+	private void botonGuardar() {
+
 	}
-	private void botonCerrar(){
-		
+
+	private void botonCerrar() {
+
 	}
 }

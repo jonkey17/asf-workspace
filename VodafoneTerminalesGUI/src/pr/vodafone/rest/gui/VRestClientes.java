@@ -1,4 +1,5 @@
 package pr.vodafone.rest.gui;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
@@ -15,19 +16,16 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.SwingUtilities;
 
-
 /**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
+ * This code was edited or generated using CloudGarden's Jigloo SWT/Swing GUI
+ * Builder, which is free for non-commercial use. If Jigloo is being used
+ * commercially (ie, by a corporation, company or business for any purpose
+ * whatever) then you should purchase a license for each developer using Jigloo.
+ * Please visit www.cloudgarden.com for details. Use of Jigloo implies
+ * acceptance of these licensing terms. A COMMERCIAL LICENSE HAS NOT BEEN
+ * PURCHASED FOR THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED LEGALLY FOR
+ * ANY CORPORATE OR COMMERCIAL PURPOSE.
+ */
 public class VRestClientes extends javax.swing.JFrame {
 	private JPanel jPanel1;
 	private JButton botonBuscar;
@@ -53,8 +51,8 @@ public class VRestClientes extends javax.swing.JFrame {
 	private JLabel jLabel1;
 
 	/**
-	* Auto-generated main method to display this JFrame
-	*/
+	 * Auto-generated main method to display this JFrame
+	 */
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -64,23 +62,28 @@ public class VRestClientes extends javax.swing.JFrame {
 			}
 		});
 	}
-	
+
 	public VRestClientes() {
 		super();
 		initGUI();
 	}
-	
+
 	private void initGUI() {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
-			this.setTitle("Gestión de Clientes");
+			this.setTitle("Gestiï¿½n de Clientes");
 			{
 				jPanel1 = new JPanel();
 				getContentPane().add(jPanel1);
 				jPanel1.setBounds(12, 12, 360, 56);
-				jPanel1.setFont(new java.awt.Font("Dialog",0,8));
-				jPanel1.setBorder(BorderFactory.createTitledBorder(null, "Búsqueda", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI",1,10), new java.awt.Color(0,0,0)));
+				jPanel1.setFont(new java.awt.Font("Dialog", 0, 8));
+				jPanel1.setBorder(BorderFactory
+						.createTitledBorder(null, "Bï¿½squeda",
+								TitledBorder.LEADING,
+								TitledBorder.DEFAULT_POSITION,
+								new java.awt.Font("Segoe UI", 1, 10),
+								new java.awt.Color(0, 0, 0)));
 				jPanel1.setLayout(null);
 				{
 					jLabel1 = new JLabel();
@@ -100,8 +103,11 @@ public class VRestClientes extends javax.swing.JFrame {
 					botonBuscar.setBounds(193, 19, 82, 23);
 					botonBuscar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out.println("botonBuscar.actionPerformed, event="+evt);
-							//TODO add your code for botonBuscar.actionPerformed
+							System.out
+									.println("botonBuscar.actionPerformed, event="
+											+ evt);
+							// TODO add your code for
+							// botonBuscar.actionPerformed
 							botonBuscar();
 						}
 					});
@@ -113,8 +119,10 @@ public class VRestClientes extends javax.swing.JFrame {
 					botonTodos.setBounds(280, 19, 70, 23);
 					botonTodos.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out.println("botonTodos.actionPerformed, event="+evt);
-							//TODO add your code for botonTodos.actionPerformed
+							System.out
+									.println("botonTodos.actionPerformed, event="
+											+ evt);
+							// TODO add your code for botonTodos.actionPerformed
 							botonTodos();
 						}
 					});
@@ -123,18 +131,23 @@ public class VRestClientes extends javax.swing.JFrame {
 			{
 				jPanel2 = new JPanel();
 				getContentPane().add(jPanel2);
-				jPanel2.setFont(new java.awt.Font("Dialog",0,8));
+				jPanel2.setFont(new java.awt.Font("Dialog", 0, 8));
 				jPanel2.setBounds(13, 78, 360, 145);
 				jPanel2.setLayout(null);
-				jPanel2.setBorder(BorderFactory.createTitledBorder(null, "Clientes", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI",1,10), new java.awt.Color(0,0,0)));
+				jPanel2.setBorder(BorderFactory
+						.createTitledBorder(null, "Clientes",
+								TitledBorder.LEADING,
+								TitledBorder.DEFAULT_POSITION,
+								new java.awt.Font("Segoe UI", 1, 10),
+								new java.awt.Color(0, 0, 0)));
 				{
 					jScrollPane1 = new JScrollPane();
 					jPanel2.add(jScrollPane1);
 					jScrollPane1.setBounds(12, 24, 336, 84);
 					{
-						TableModel jTable1Model = 
-							new DefaultTableModel(
-									new String[] { "DNI", "Nombre", "Dirección", "Email" }, 2);
+						TableModel jTable1Model = new DefaultTableModel(
+								new String[] { "DNI", "Nombre", "Direcciï¿½n",
+										"Email" }, 2);
 						tablaClientes = new JTable();
 						jScrollPane1.setViewportView(tablaClientes);
 						tablaClientes.setModel(jTable1Model);
@@ -143,12 +156,15 @@ public class VRestClientes extends javax.swing.JFrame {
 				{
 					botonLineas = new JButton();
 					jPanel2.add(botonLineas);
-					botonLineas.setText("Ver Líneas...");
+					botonLineas.setText("Ver Lï¿½neas...");
 					botonLineas.setBounds(250, 113, 98, 23);
 					botonLineas.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out.println("botonLineas.actionPerformed, event="+evt);
-							//TODO add your code for botonLineas.actionPerformed
+							System.out
+									.println("botonLineas.actionPerformed, event="
+											+ evt);
+							// TODO add your code for
+							// botonLineas.actionPerformed
 							botonVerLineas();
 						}
 					});
@@ -160,8 +176,11 @@ public class VRestClientes extends javax.swing.JFrame {
 					botonEditar.setBounds(175, 113, 70, 23);
 					botonEditar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out.println("botonEditar.actionPerformed, event="+evt);
-							//TODO add your code for botonEditar.actionPerformed
+							System.out
+									.println("botonEditar.actionPerformed, event="
+											+ evt);
+							// TODO add your code for
+							// botonEditar.actionPerformed
 							botonEditar();
 						}
 					});
@@ -170,10 +189,15 @@ public class VRestClientes extends javax.swing.JFrame {
 			{
 				jPanel3 = new JPanel();
 				getContentPane().add(jPanel3);
-				jPanel3.setFont(new java.awt.Font("Dialog",0,8));
+				jPanel3.setFont(new java.awt.Font("Dialog", 0, 8));
 				jPanel3.setBounds(13, 235, 359, 143);
 				jPanel3.setLayout(null);
-				jPanel3.setBorder(BorderFactory.createTitledBorder(null, "Edición", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI",1,10), new java.awt.Color(0,0,0)));
+				jPanel3.setBorder(BorderFactory
+						.createTitledBorder(null, "Ediciï¿½n",
+								TitledBorder.LEADING,
+								TitledBorder.DEFAULT_POSITION,
+								new java.awt.Font("Segoe UI", 1, 10),
+								new java.awt.Color(0, 0, 0)));
 				{
 					jLabel3 = new JLabel();
 					jPanel3.add(jLabel3);
@@ -199,7 +223,7 @@ public class VRestClientes extends javax.swing.JFrame {
 				{
 					jLabel4 = new JLabel();
 					jPanel3.add(jLabel4);
-					jLabel4.setText("Dirección:");
+					jLabel4.setText("Direcciï¿½n:");
 					jLabel4.setBounds(10, 81, 57, 16);
 				}
 				{
@@ -225,8 +249,10 @@ public class VRestClientes extends javax.swing.JFrame {
 					botonNuevo.setBounds(181, 21, 73, 23);
 					botonNuevo.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out.println("botonNuevo.actionPerformed, event="+evt);
-							//TODO add your code for botonNuevo.actionPerformed
+							System.out
+									.println("botonNuevo.actionPerformed, event="
+											+ evt);
+							// TODO add your code for botonNuevo.actionPerformed
 							botonNuevo();
 						}
 					});
@@ -238,8 +264,11 @@ public class VRestClientes extends javax.swing.JFrame {
 					botonGuardar.setBounds(259, 21, 89, 23);
 					botonGuardar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out.println("botonGuardar.actionPerformed, event="+evt);
-							//TODO add your code for botonGuardar.actionPerformed
+							System.out
+									.println("botonGuardar.actionPerformed, event="
+											+ evt);
+							// TODO add your code for
+							// botonGuardar.actionPerformed
 							botonGuardar();
 						}
 					});
@@ -252,8 +281,9 @@ public class VRestClientes extends javax.swing.JFrame {
 				botonSalir.setBounds(297, 384, 75, 23);
 				botonSalir.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						System.out.println("botonSalir.actionPerformed, event="+evt);
-						//TODO add your code for botonSalir.actionPerformed
+						System.out.println("botonSalir.actionPerformed, event="
+								+ evt);
+						// TODO add your code for botonSalir.actionPerformed
 						botonSalir();
 					}
 				});
@@ -261,30 +291,36 @@ public class VRestClientes extends javax.swing.JFrame {
 			pack();
 			this.setSize(400, 452);
 		} catch (Exception e) {
-		    //add your error handling code here
+			// add your error handling code here
 			e.printStackTrace();
 		}
 	}
-	
-	private void botonBuscar(){
-		
+
+	private void botonBuscar() {
+
 	}
-	private void botonTodos(){
-		
+
+	private void botonTodos() {
+
 	}
-	private void botonEditar(){
-		
+
+	private void botonEditar() {
+
 	}
-	private void botonVerLineas(){
-		
+
+	private void botonVerLineas() {
+
 	}
-	private void botonNuevo(){
-		
+
+	private void botonNuevo() {
+
 	}
-	private void botonGuardar(){
-		
+
+	private void botonGuardar() {
+
 	}
-	private void botonSalir(){
+
+	private void botonSalir() {
 		System.exit(0);
 	}
 }
