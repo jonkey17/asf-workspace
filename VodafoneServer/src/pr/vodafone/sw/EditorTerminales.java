@@ -1,7 +1,6 @@
 package pr.vodafone.sw;
 
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.Vector;
 
 import pr.vodafone.dao.GestorBD;
@@ -77,11 +76,6 @@ public class EditorTerminales {
 			return false;
 		}
 		return true;
-	}
-	
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		EditorTerminales e = new EditorTerminales();
-		System.out.println(Arrays.toString(e.obtenerTerminales()));
 	}
 
 }
