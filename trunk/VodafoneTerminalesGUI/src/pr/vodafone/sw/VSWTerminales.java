@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -21,7 +20,6 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import org.apache.axis2.AxisFault;
@@ -122,8 +120,6 @@ public class VSWTerminales extends javax.swing.JFrame {
 							System.out
 									.println("botonEditar.actionPerformed, event="
 											+ evt);
-							// TODO add your code for
-							// botonEditar.actionPerformed
 							botonEditar();
 						}
 					});
@@ -138,8 +134,6 @@ public class VSWTerminales extends javax.swing.JFrame {
 							System.out
 									.println("botonCargar.actionPerformed, event="
 											+ evt);
-							// TODO add your code for
-							// botonEditar.actionPerformed
 							botonCargar();
 						}
 					});
@@ -214,8 +208,6 @@ public class VSWTerminales extends javax.swing.JFrame {
 							System.out
 									.println("botonEnviar.actionPerformed, event="
 											+ evt);
-							// TODO add your code for
-							// botonEnviar.actionPerformed
 							botonEnviar();
 						}
 					});
@@ -264,7 +256,6 @@ public class VSWTerminales extends javax.swing.JFrame {
 						System.out
 								.println("botonCerrar.actionPerformed, event="
 										+ evt);
-						// TODO add your code for botonCerrar.actionPerformed
 						botonCerrar();
 					}
 				});
@@ -272,7 +263,6 @@ public class VSWTerminales extends javax.swing.JFrame {
 			pack();
 			this.setSize(400, 559);
 		} catch (Exception e) {
-			// add your error handling code here
 			e.printStackTrace();
 		}
 
@@ -280,34 +270,12 @@ public class VSWTerminales extends javax.swing.JFrame {
 			stub = new EditorTerminalesStub(
 					"http://localhost:8080/axis2/services/EditorTerminales");
 		} catch (AxisFault e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-	}
-
-	private void obtenerTerminales() {
-		ObtenerTerminales ot = new ObtenerTerminales();
-
-		ObtenerTerminalesResponse otr;
-		try {
-			otr = stub.obtenerTerminales(ot);
-			Terminal[] arrayTerminales = otr.get_return();
-			if (arrayTerminales == null) {
-				arrayTerminales = new Terminal[] {};
-			}
-			DefaultTableModel tableModel = (DefaultTableModel) tablaTerminales
-					.getModel();
-			for (int i = 0; i < arrayTerminales.length; i++) {
-				String[] terminal = { arrayTerminales[i].getIdTerminal(),
-						arrayTerminales[i].getMarca(),
-						arrayTerminales[i].getModelo(),
-						arrayTerminales[i].getPrecio() + "" };
-				tableModel.insertRow(i, terminal);
-			}
-
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane
+					.showMessageDialog(
+							this,
+							"No se ha podido contactar con el servidor. Comprueba que este funcionando y vuelve a intentarlo.",
+							"Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -336,7 +304,7 @@ public class VSWTerminales extends javax.swing.JFrame {
 	}
 
 	private void botonCargar() {
-		
+
 		JFileChooser jfc = new JFileChooser();
 		int returnVal = jfc.showOpenDialog(this);
 
@@ -349,8 +317,9 @@ public class VSWTerminales extends javax.swing.JFrame {
 				Unmarshaller um = context.createUnmarshaller();
 
 				Terminales terminales = (Terminales) um.unmarshal(fichero);
-				
-				System.out.println(terminales.getListaTerminales().get(0).getMarca());
+
+				System.out.println(terminales.getListaTerminales().get(0)
+						.getMarca());
 
 				DefaultTableModel tableModel = (DefaultTableModel) tablaTerminales
 						.getModel();
@@ -359,7 +328,8 @@ public class VSWTerminales extends javax.swing.JFrame {
 							terminales.getListaTerminales().get(i).getId() + "",
 							terminales.getListaTerminales().get(i).getMarca(),
 							terminales.getListaTerminales().get(i).getModelo(),
-							terminales.getListaTerminales().get(i).getPrecio() + "" };
+							terminales.getListaTerminales().get(i).getPrecio()
+									+ "" };
 					tableModel.insertRow(i, terminal);
 				}
 
@@ -426,7 +396,6 @@ public class VSWTerminales extends javax.swing.JFrame {
 			System.out.println("Terminal actualizado = " + atr.get_return());
 
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
