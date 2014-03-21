@@ -1,4 +1,4 @@
-package pr.vodafone.rest.gui;
+package pr.vodafone.rest.pattern;
 
 import java.net.URI;
 
