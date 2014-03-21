@@ -5,18 +5,22 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.swing.SwingUtilities;
+import javax.ws.rs.core.MediaType;
 
-import pr.vodafone.rest.data.Linea;
+import pr.vodafone.rest.data.Factura;
+
+import com.sun.jersey.api.client.WebResource;
 
 /**
  * This code was edited or generated using CloudGarden's Jigloo SWT/Swing GUI
@@ -60,24 +64,21 @@ public class VRestFacturas extends javax.swing.JFrame {
 	private JPanel jPanel2;
 	private JLabel jLabel1;
 
-	private Linea linea;
-
 	/**
 	 * Auto-generated main method to display this JFrame
 	 */
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				VRestFacturas inst = new VRestFacturas(null);
+				VRestFacturas inst = new VRestFacturas();
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 			}
 		});
 	}
 
-	public VRestFacturas(Linea linea) {
+	public VRestFacturas() {
 		super();
-		this.linea = linea;
 		initGUI();
 	}
 
@@ -216,7 +217,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 											+ evt);
 							// TODO add your code for
 							// botonBorrar.actionPerformed
-							botonBorrar();
+							botonBorrar("");
 						}
 					});
 				}
@@ -347,13 +348,18 @@ public class VRestFacturas extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
 	}
+	
+	private void peticionGet(String numLinea){
+		Factura factura=Singleton.getInstance().path("rest").path("lineas").path(numLinea).path("facturas").accept(MediaType.APPLICATION_XML).get(Factura.class);
+	}
 
 	private void botonEditar() {
 
 	}
 
-	private void botonBorrar() {
-
+	private void botonBorrar(String numFactura) {
+		Singleton.getInstance().path("rest").path("facturas").path(numFactura).delete();
+		System.out.println("Factura"+ numFactura+ "deleted");
 	}
 
 	private void botonNueva() {
