@@ -5,22 +5,20 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import javax.swing.SwingUtilities;
 import javax.ws.rs.core.MediaType;
 
 import pr.vodafone.rest.data.Factura;
-
-import com.sun.jersey.api.client.WebResource;
+import pr.vodafone.rest.pattern.Singleton;
 
 /**
  * This code was edited or generated using CloudGarden's Jigloo SWT/Swing GUI
