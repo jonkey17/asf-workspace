@@ -2,20 +2,21 @@ package pr.vodafone.rest.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import javax.swing.SwingUtilities;
+
+import pr.vodafone.rest.data.Linea;
 
 /**
  * This code was edited or generated using CloudGarden's Jigloo SWT/Swing GUI
@@ -59,21 +60,24 @@ public class VRestFacturas extends javax.swing.JFrame {
 	private JPanel jPanel2;
 	private JLabel jLabel1;
 
+	private Linea linea;
+
 	/**
 	 * Auto-generated main method to display this JFrame
 	 */
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				VRestFacturas inst = new VRestFacturas();
+				VRestFacturas inst = new VRestFacturas(null);
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 			}
 		});
 	}
 
-	public VRestFacturas() {
+	public VRestFacturas(Linea linea) {
 		super();
+		this.linea = linea;
 		initGUI();
 	}
 
