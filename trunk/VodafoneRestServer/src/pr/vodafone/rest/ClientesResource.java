@@ -13,7 +13,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
@@ -22,11 +21,6 @@ import pr.vodafone.rest.utils.Utils;
 
 @Path("/clientes")
 public class ClientesResource {
-
-	@Context
-	UriInfo uriInfo;
-	@Context
-	Request request;
 
 	@GET
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
@@ -41,7 +35,7 @@ public class ClientesResource {
 
 	@POST
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public Response newCliente(Cliente cliente) {
+	public Response newCliente(@Context UriInfo uriInfo, Cliente cliente) {
 		Response res;
 		try {
 			if (Utils.getBD().obtenerCliente(cliente.getDni()) != null) {

@@ -22,9 +22,6 @@ import pr.vodafone.rest.utils.Utils;
 @Path("/lineas")
 public class LineasResource {
 
-	@Context
-	UriInfo uriInfo;
-
 	private String dni = null;
 
 	public LineasResource() {
@@ -52,7 +49,7 @@ public class LineasResource {
 
 	@POST
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public Response newLinea(Linea linea) {
+	public Response newLinea(@Context UriInfo uriInfo, Linea linea) {
 		Response res;
 		if (dni == null) {
 			res = Response.status(405).build();

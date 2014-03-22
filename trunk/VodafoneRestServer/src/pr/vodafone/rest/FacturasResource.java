@@ -22,9 +22,6 @@ import pr.vodafone.rest.utils.Utils;
 @Path("/facturas")
 public class FacturasResource {
 
-	@Context
-	UriInfo uriInfo;
-
 	private String num = null;
 
 	public FacturasResource() {
@@ -52,7 +49,7 @@ public class FacturasResource {
 
 	@POST
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public Response newFactura(Factura factura) {
+	public Response newFactura(@Context UriInfo uriInfo, Factura factura) {
 		Response res;
 		if (num == null) {
 			res = Response.status(405).build();
@@ -65,11 +62,11 @@ public class FacturasResource {
 									+ factura.getTelefono()
 									+ " no coincide con linea actual").build();
 				} else {
-					URI uri = uriInfo.getAbsolutePathBuilder()
-							.path(factura.getIdFactura() + "").build();
-					res = Response.created(uri).entity(factura).build();
-					Utils.getBD().insertarFactura(
+					int id = Utils.getBD().insertarFactura(
 							Utils.facturaDataADAO(factura));
+					URI uri = uriInfo.getAbsolutePathBuilder()
+							.path(id + "").build();
+					res = Response.created(uri).entity(factura).build();
 				}
 			} catch (SQLException ex) {
 				res = Response.serverError().entity(ex.getMessage()).build();
