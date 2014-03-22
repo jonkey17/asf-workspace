@@ -64,12 +64,6 @@ public class FacturasResource {
 							.entity("Put: Factura con numero "
 									+ factura.getTelefono()
 									+ " no coincide con linea actual").build();
-				} else if (Utils.getBD().obtenerFactura(factura.getIdFactura()) != null) {
-					res = Response
-							.status(409)
-							.entity("Post: La factura con id "
-									+ factura.getIdFactura() + " ya existe")
-							.build();
 				} else {
 					URI uri = uriInfo.getAbsolutePathBuilder()
 							.path(factura.getIdFactura() + "").build();

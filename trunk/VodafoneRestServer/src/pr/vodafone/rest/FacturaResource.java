@@ -68,11 +68,9 @@ public class FacturaResource {
 	@DELETE
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Response deleteFactura() {
-		Response res;
 		try {
 			Utils.getBD().borrarFactura(id);
-			res = Response.ok().build();
-			return res;
+			return Response.ok().build();
 		} catch (SQLException ex) {
 			throw new WebApplicationException(Response.serverError()
 					.entity(ex.getMessage()).build());
