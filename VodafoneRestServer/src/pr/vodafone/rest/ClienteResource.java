@@ -10,18 +10,13 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
 
 import pr.vodafone.rest.data.Cliente;
 import pr.vodafone.rest.utils.Utils;
 
 public class ClienteResource {
-
-	@Context
-	UriInfo uriInfo;
 
 	private String dni;
 
