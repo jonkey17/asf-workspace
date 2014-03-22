@@ -27,7 +27,7 @@ public class Singleton {
 	}
 
 	public static URI getBaseURI() {
-		return UriBuilder.fromUri("http://localhost:8080/vodafone").build();
+		return UriBuilder.fromUri("http://localhost:8080/VodafoneRestServer").build();
 	}
 	
 }
