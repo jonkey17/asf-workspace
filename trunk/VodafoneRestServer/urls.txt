@@ -1,19 +1,19 @@
 CLIENTES
 --------
-GET - Obtener todos los clientes - http://localhost:8080/vodafone/rest/clientes - Si vacio, 204
-GET - Busca clientes con DNI like 1234 - http://localhost:8080/vodafone/rest/clientes/1234 - Si vacio, 204
-POST - Crear nuevo cliente - http://localhost:8080/vodafone/rest/clientes - Si OK, 201; si ya existe, 409
-PUT - Editar cliente 12345678 - http://localhost:8080/vodafone/rest/clientes/12345678; Si no existe, 404
+GET - Obtener todos los clientes - http://localhost:8080/VodafoneRestServer/rest/clientes - Si vacio, 204
+GET - Busca clientes con DNI like 1234 - http://localhost:8080/VodafoneRestServer/rest/clientes/1234 - Si vacio, 204
+POST - Crear nuevo cliente - http://localhost:8080/VodafoneRestServer/rest/clientes - Si OK, 201; si ya existe, 409
+PUT - Editar cliente 12345678 - http://localhost:8080/VodafoneRestServer/rest/clientes/12345678; Si no existe, 404
 
 LINEAS
 ------
-GET - Obtener las lineas del cliente 12345678 - http://localhost:8080/vodafone/rest/clientes/12345678/lineas - Si vacio, 204
-POST - Crear nueva linea para cliente 12345678 - http://localhost:8080/vodafone/rest/clientes/12345678/lineas - Si OK, 201; si ya existe, 409
-PUT - Editar linea 666666666 - http://localhost:8080/vodafone/rest/lineas/666666666; Si no existe, 404
+GET - Obtener las lineas del cliente 12345678 - http://localhost:8080/VodafoneRestServer/rest/clientes/12345678/lineas - Si vacio, 204
+POST - Crear nueva linea para cliente 12345678 - http://localhost:8080/VodafoneRestServer/rest/clientes/12345678/lineas - Si OK, 201; si ya existe, 409
+PUT - Editar linea 666666666 - http://localhost:8080/VodafoneRestServer/rest/lineas/666666666; Si no existe, 404
 
 FACTURAS
 --------
-GET - Obtener facturas de la linea 666666666 - http://localhost:8080/vodafone/rest/lineas/666666666/facturas - Si vacio, 204
-POST - Crear nueva factura para la linea 666666666 - http://localhost:8080/vodafone/rest/lineas/666666666/facturas - Si OK, 201; si ya existe, 409
-PUT - Editar factura 123 - http://localhost:8080/vodafone/rest/facturas/123; Si no existe, 404
-DELETE - Borra la factura 123 - http://localhost:8080/vodafone/rest/facturas/123; Si no existe, 404
+GET - Obtener facturas de la linea 666666666 - http://localhost:8080/VodafoneRestServer/rest/lineas/666666666/facturas - Si vacio, 204
+POST - Crear nueva factura para la linea 666666666 - http://localhost:8080/VodafoneRestServer/rest/lineas/666666666/facturas - Si OK, 201; si ya existe, 409
+PUT - Editar factura 123 - http://localhost:8080/VodafoneRestServer/rest/facturas/123; Si no existe, 404
+DELETE - Borra la factura 123 - http://localhost:8080/VodafoneRestServer/rest/facturas/123; Si no existe, 404
