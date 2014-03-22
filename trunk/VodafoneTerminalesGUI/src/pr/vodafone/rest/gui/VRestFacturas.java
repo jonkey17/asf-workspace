@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -18,7 +19,11 @@ import javax.swing.table.TableModel;
 import javax.ws.rs.core.MediaType;
 
 import pr.vodafone.rest.data.Factura;
+import pr.vodafone.rest.data.Linea;
 import pr.vodafone.rest.pattern.Singleton;
+
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.UniformInterfaceException;
 
 /**
  * This code was edited or generated using CloudGarden's Jigloo SWT/Swing GUI
@@ -61,6 +66,8 @@ public class VRestFacturas extends javax.swing.JFrame {
 	private JPanel jPanel3;
 	private JPanel jPanel2;
 	private JLabel jLabel1;
+	
+	private Linea linea;
 
 	/**
 	 * Auto-generated main method to display this JFrame
@@ -68,15 +75,17 @@ public class VRestFacturas extends javax.swing.JFrame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				VRestFacturas inst = new VRestFacturas();
+				Linea linea= new Linea("666222000", "mucha", true, "koko", "popo", "lolo", "21232121-X");
+				VRestFacturas inst = new VRestFacturas(linea);
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 			}
 		});
 	}
 
-	public VRestFacturas() {
+	public VRestFacturas(Linea linea) {
 		super();
+		this.linea=linea;
 		initGUI();
 	}
 
@@ -84,7 +93,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
-			this.setTitle("Gestiï¿½n de Facturas");
+			this.setTitle("Gestión de Facturas");
 			{
 				jPanel1 = new JPanel();
 				getContentPane().add(jPanel1);
@@ -92,7 +101,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 				jPanel1.setFont(new java.awt.Font("Dialog", 1, 10));
 				jPanel1.setLayout(null);
 				jPanel1.setBorder(BorderFactory
-						.createTitledBorder(null, "Datos Lï¿½nea",
+						.createTitledBorder(null, "Datos Línea",
 								TitledBorder.LEADING,
 								TitledBorder.DEFAULT_POSITION,
 								new java.awt.Font("Segoe UI", 1, 10),
@@ -100,7 +109,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 				{
 					jLabel1 = new JLabel();
 					jPanel1.add(jLabel1);
-					jLabel1.setText("Telï¿½fono:");
+					jLabel1.setText("Teléfono:");
 					jLabel1.setBounds(11, 22, 70, 16);
 				}
 				{
@@ -124,14 +133,14 @@ public class VRestFacturas extends javax.swing.JFrame {
 				{
 					labelTelefono = new JLabel();
 					jPanel1.add(labelTelefono);
-					labelTelefono.setText("xxxxxxxxxx");
+					labelTelefono.setText(linea.getTelefono());
 					labelTelefono.setBounds(92, 22, 102, 16);
 					labelTelefono.setFont(new java.awt.Font("Segoe UI", 1, 12));
 				}
 				{
 					labelAntiguedad = new JLabel();
 					jPanel1.add(labelAntiguedad);
-					labelAntiguedad.setText("xxxxxxxxxx");
+					labelAntiguedad.setText(linea.getAntiguedad());
 					labelAntiguedad.setBounds(92, 44, 102, 16);
 					labelAntiguedad
 							.setFont(new java.awt.Font("Segoe UI", 1, 12));
@@ -139,21 +148,21 @@ public class VRestFacturas extends javax.swing.JFrame {
 				{
 					labelVoz = new JLabel();
 					jPanel1.add(labelVoz);
-					labelVoz.setText("xxxxxxxxxx");
+					labelVoz.setText(linea.getTarifaVoz());
 					labelVoz.setBounds(92, 66, 102, 16);
 					labelVoz.setFont(new java.awt.Font("Segoe UI", 1, 12));
 				}
 				{
 					labelDatos = new JLabel();
 					jPanel1.add(labelDatos);
-					labelDatos.setText("xxxxxxxxxx");
+					labelDatos.setText(linea.getTarifaDatos());
 					labelDatos.setBounds(92, 89, 102, 16);
 					labelDatos.setFont(new java.awt.Font("Segoe UI", 1, 12));
 				}
 				{
 					jLabel10 = new JLabel();
 					jPanel1.add(jLabel10);
-					jLabel10.setText("Promociï¿½n:");
+					jLabel10.setText("Promoción:");
 					jLabel10.setBounds(195, 22, 65, 16);
 				}
 				{
@@ -165,7 +174,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 				{
 					labelPromocion = new JLabel();
 					jPanel1.add(labelPromocion);
-					labelPromocion.setText("xxxxxxxxxx");
+					labelPromocion.setText(linea.getPromocion());
 					labelPromocion.setBounds(263, 22, 87, 16);
 					labelPromocion
 							.setFont(new java.awt.Font("Segoe UI", 1, 12));
@@ -173,7 +182,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 				{
 					labelActiva = new JLabel();
 					jPanel1.add(labelActiva);
-					labelActiva.setText("Si");
+					labelActiva.setText(linea.isActiva()?"Si":"No");
 					labelActiva.setBounds(263, 44, 87, 16);
 					labelActiva.setFont(new java.awt.Font("Segoe UI", 1, 12));
 				}
@@ -210,12 +219,13 @@ public class VRestFacturas extends javax.swing.JFrame {
 					botonBorrar.setBounds(266, 113, 82, 23);
 					botonBorrar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out
-									.println("botonBorrar.actionPerformed, event="
+							System.out.println("botonBorrar.actionPerformed, event="
 											+ evt);
 							// TODO add your code for
 							// botonBorrar.actionPerformed
-							botonBorrar("");
+							if(comprobarSelecion()){
+								botonBorrar();
+							}							
 						}
 					});
 				}
@@ -231,7 +241,9 @@ public class VRestFacturas extends javax.swing.JFrame {
 											+ evt);
 							// TODO add your code for
 							// botonEditar.actionPerformed
-							botonEditar();
+							if(comprobarSelecion()){
+								botonEditar();
+							}							
 						}
 					});
 				}
@@ -243,7 +255,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 				jPanel3.setBounds(13, 297, 359, 145);
 				jPanel3.setLayout(null);
 				jPanel3.setBorder(BorderFactory
-						.createTitledBorder(null, "Ediciï¿½n",
+						.createTitledBorder(null, "Edición",
 								TitledBorder.LEADING,
 								TitledBorder.DEFAULT_POSITION,
 								new java.awt.Font("Segoe UI", 1, 10),
@@ -341,6 +353,8 @@ public class VRestFacturas extends javax.swing.JFrame {
 			}
 			pack();
 			this.setSize(400, 521);
+			
+			peticionGet(linea.getTelefono());
 		} catch (Exception e) {
 			// add your error handling code here
 			e.printStackTrace();
@@ -348,27 +362,81 @@ public class VRestFacturas extends javax.swing.JFrame {
 	}
 	
 	private void peticionGet(String numLinea){
-		Factura factura=Singleton.getInstance().path("rest").path("lineas").path(numLinea).path("facturas").accept(MediaType.APPLICATION_XML).get(Factura.class);
+		try{
+			System.out.println("josadasdjo");
+		Factura facturas[]=Singleton.getInstance().path("rest").path("lineas").path(numLinea).path("facturas").accept(MediaType.APPLICATION_XML).get(Factura[].class);
+		System.out.println("jojo");
+		//TODO actualizar la tabla con los datos del array
+		DefaultTableModel tableModel = (DefaultTableModel) tablaFacturas.getModel();
+		for (int i = 0; i < facturas.length; i++) {
+			tableModel.insertRow(i, new Object[]{facturas[i].getIdFactura(), facturas[i].getFecha(), facturas[i].getPeriodo(), facturas[i].getImporte()});
+		}
+		}catch(UniformInterfaceException e){ // if code != 20x exception is thrown
+			ClientResponse r = e.getResponse();
+			JOptionPane.showMessageDialog(VRestFacturas.this, r.getEntity(String.class), "Error "+ r.getStatus(), JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	private void botonEditar() {
-
+		int row=tablaFacturas.getSelectedRow();
+		DefaultTableModel tableModel = (DefaultTableModel) tablaFacturas.getModel();
+		String id= tableModel.getValueAt(row, 0)+"";
+		String importe=tableModel.getValueAt(row, 3)+"";
+		cajaId.setText(id);
+		cajaFecha.setText( (String) tableModel.getValueAt(row, 1));
+		cajaPeriodo.setText( (String) tableModel.getValueAt(row, 2));
+		cajaImporte.setText( importe);
+		
 	}
 
-	private void botonBorrar(String numFactura) {
-		Singleton.getInstance().path("rest").path("facturas").path(numFactura).delete();
-		System.out.println("Factura"+ numFactura+ "deleted");
+	private void botonBorrar() {
+		try{
+		DefaultTableModel tableModel = (DefaultTableModel) tablaFacturas.getModel();
+		String idFactura=(String) tableModel.getValueAt(tablaFacturas.getSelectedRow(), 1);
+		Singleton.getInstance().path("rest").path("facturas").path(idFactura).delete();
+		System.out.println("Factura "+ idFactura+ " eliminada");
+		}catch(UniformInterfaceException e){
+			ClientResponse r = e.getResponse();
+			JOptionPane.showMessageDialog(VRestFacturas.this, r.getEntity(String.class), "Error "+ r.getStatus(), JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	private void botonNueva() {
-
+		//Factura factura= new Factura(Integer.parseInt(cajaId.getText()), cajaFecha.getText(), cajaPeriodo.getText(), Float.parseFloat(cajaImporte.getText()),linea.getTelefono());
+		Factura factura= new Factura(cajaFecha.getText(), cajaPeriodo.getText(), Float.parseFloat(cajaImporte.getText()),linea.getTelefono());
+		try{
+			Singleton.getInstance().path("rest").path("lineas").path(factura.getTelefono()).path("facturas").type(MediaType.APPLICATION_XML).accept(MediaType.APPLICATION_JSON).post(factura);
+			System.out.println("Factura creada correctamente");
+		}catch(UniformInterfaceException e){
+			ClientResponse r = e.getResponse();
+			JOptionPane.showMessageDialog(VRestFacturas.this, r.getEntity(String.class), "Error "+ r.getStatus(), JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	private void botonGuardar() {
-
+		Factura factura= new Factura(Integer.parseInt(cajaId.getText()), cajaFecha.getText(), cajaPeriodo.getText(), Float.parseFloat(cajaImporte.getText()),linea.getTelefono());
+		try{
+			Singleton.getInstance().path("rest").path("lineas").path(factura.getTelefono()).path("facturas").type(MediaType.APPLICATION_XML).accept(MediaType.APPLICATION_JSON).put(factura);
+			System.out.println("Factura editada correctamente");
+		}catch(UniformInterfaceException e){
+			ClientResponse r = e.getResponse();
+			JOptionPane.showMessageDialog(VRestFacturas.this, r.getEntity(String.class), "Error "+ r.getStatus(), JOptionPane.ERROR_MESSAGE);
+			//System.out.println("facturas.PUT('application/xml').status: " + r.getStatus());
+			//System.out.println("facturas.PUT('application/xml').entity: " + r.getEntity(String.class));
+		}
 	}
 
 	private void botonCerrar() {
 
 	}
+	
+	private boolean comprobarSelecion(){
+		if(tablaFacturas.getSelectedRow()<0){
+			JOptionPane.showMessageDialog(VRestFacturas.this, "No has seleccionado ninguna factura", "Atención", JOptionPane.WARNING_MESSAGE);
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
 }
