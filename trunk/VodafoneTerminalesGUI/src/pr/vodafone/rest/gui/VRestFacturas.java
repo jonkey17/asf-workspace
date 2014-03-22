@@ -225,7 +225,8 @@ public class VRestFacturas extends javax.swing.JFrame {
 							// botonBorrar.actionPerformed
 							if(comprobarSelecion()){
 								botonBorrar();
-							}							
+							}	
+							peticionGet(linea.getTelefono());
 						}
 					});
 				}
@@ -243,7 +244,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 							// botonEditar.actionPerformed
 							if(comprobarSelecion()){
 								botonEditar();
-							}							
+							}										
 						}
 					});
 				}
@@ -316,6 +317,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 											+ evt);
 							// TODO add your code for botonNueva.actionPerformed
 							botonNueva();
+							peticionGet(linea.getTelefono());
 						}
 					});
 				}
@@ -332,6 +334,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 							// TODO add your code for
 							// botonGuardar.actionPerformed
 							botonGuardar();
+							peticionGet(linea.getTelefono());
 						}
 					});
 				}
@@ -363,11 +366,10 @@ public class VRestFacturas extends javax.swing.JFrame {
 	
 	private void peticionGet(String numLinea){
 		try{
-			System.out.println("josadasdjo");
 		Factura facturas[]=Singleton.getInstance().path("rest").path("lineas").path(numLinea).path("facturas").accept(MediaType.APPLICATION_XML).get(Factura[].class);
-		System.out.println("jojo");
-		//TODO actualizar la tabla con los datos del array
+		
 		DefaultTableModel tableModel = (DefaultTableModel) tablaFacturas.getModel();
+		tableModel.getDataVector().removeAllElements();
 		for (int i = 0; i < facturas.length; i++) {
 			tableModel.insertRow(i, new Object[]{facturas[i].getIdFactura(), facturas[i].getFecha(), facturas[i].getPeriodo(), facturas[i].getImporte()});
 		}
@@ -392,7 +394,8 @@ public class VRestFacturas extends javax.swing.JFrame {
 	private void botonBorrar() {
 		try{
 		DefaultTableModel tableModel = (DefaultTableModel) tablaFacturas.getModel();
-		String idFactura=(String) tableModel.getValueAt(tablaFacturas.getSelectedRow(), 1);
+		String idFactura=tableModel.getValueAt(tablaFacturas.getSelectedRow(), 0)+"";
+		System.out.println(idFactura);
 		Singleton.getInstance().path("rest").path("facturas").path(idFactura).delete();
 		System.out.println("Factura "+ idFactura+ " eliminada");
 		}catch(UniformInterfaceException e){
@@ -403,7 +406,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 
 	private void botonNueva() {
 		//Factura factura= new Factura(Integer.parseInt(cajaId.getText()), cajaFecha.getText(), cajaPeriodo.getText(), Float.parseFloat(cajaImporte.getText()),linea.getTelefono());
-		Factura factura= new Factura(cajaFecha.getText(), cajaPeriodo.getText(), Float.parseFloat(cajaImporte.getText()),linea.getTelefono());
+		Factura factura= new Factura(cajaFecha.getText(), cajaPeriodo.getText(), Float.parseFloat(cajaImporte.getText()),linea.getTelefono());		
 		try{
 			Singleton.getInstance().path("rest").path("lineas").path(factura.getTelefono()).path("facturas").type(MediaType.APPLICATION_XML).accept(MediaType.APPLICATION_JSON).post(factura);
 			System.out.println("Factura creada correctamente");
@@ -414,9 +417,10 @@ public class VRestFacturas extends javax.swing.JFrame {
 	}
 
 	private void botonGuardar() {
-		Factura factura= new Factura(Integer.parseInt(cajaId.getText()), cajaFecha.getText(), cajaPeriodo.getText(), Float.parseFloat(cajaImporte.getText()),linea.getTelefono());
+		String idFactura=cajaId.getText();
+		Factura factura= new Factura(Integer.parseInt(idFactura), cajaFecha.getText(), cajaPeriodo.getText(), Float.parseFloat(cajaImporte.getText()),linea.getTelefono());
 		try{
-			Singleton.getInstance().path("rest").path("lineas").path(factura.getTelefono()).path("facturas").type(MediaType.APPLICATION_XML).accept(MediaType.APPLICATION_JSON).put(factura);
+			Singleton.getInstance().path("rest").path("facturas").path(idFactura).type(MediaType.APPLICATION_XML).accept(MediaType.APPLICATION_JSON).put(factura);
 			System.out.println("Factura editada correctamente");
 		}catch(UniformInterfaceException e){
 			ClientResponse r = e.getResponse();
@@ -427,7 +431,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 	}
 
 	private void botonCerrar() {
-
+		dispose();
 	}
 	
 	private boolean comprobarSelecion(){
