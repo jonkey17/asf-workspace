@@ -2,20 +2,29 @@ package pr.vodafone.rest.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import javax.swing.SwingUtilities;
+import javax.ws.rs.core.MediaType;
+
+import pr.vodafone.rest.data.Cliente;
+import pr.vodafone.rest.data.Linea;
+import pr.vodafone.rest.pattern.Singleton;
+
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.UniformInterfaceException;
 
 /**
  * This code was edited or generated using CloudGarden's Jigloo SWT/Swing GUI
@@ -28,6 +37,8 @@ import javax.swing.SwingUtilities;
  * ANY CORPORATE OR COMMERCIAL PURPOSE.
  */
 public class VRestLineas extends javax.swing.JFrame {
+	private static final long serialVersionUID = 4153263715359533864L;
+
 	private JPanel jPanel1;
 	private JCheckBox checkActiva;
 	private JLabel labelEmail;
@@ -58,21 +69,28 @@ public class VRestLineas extends javax.swing.JFrame {
 	private JPanel jPanel2;
 	private JLabel jLabel1;
 
+	private Cliente cliente;
+	private Linea[] lineas;
+
 	/**
 	 * Auto-generated main method to display this JFrame
 	 */
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				VRestLineas inst = new VRestLineas();
+				// TODO Recibir cliente
+				Cliente cli = new Cliente("111", "Ibai", "Direccion de Ibai",
+						"Email de Ibai");
+				VRestLineas inst = new VRestLineas(cli);
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 			}
 		});
 	}
 
-	public VRestLineas() {
+	public VRestLineas(Cliente cliente) {
 		super();
+		this.cliente = cliente;
 		initGUI();
 	}
 
@@ -120,21 +138,21 @@ public class VRestLineas extends javax.swing.JFrame {
 				{
 					labelDNI = new JLabel();
 					jPanel1.add(labelDNI);
-					labelDNI.setText("xxxxxxxxxx");
+					labelDNI.setText(cliente.getDni());
 					labelDNI.setBounds(80, 22, 263, 16);
 					labelDNI.setFont(new java.awt.Font("Segoe UI", 1, 12));
 				}
 				{
 					labelNombre = new JLabel();
 					jPanel1.add(labelNombre);
-					labelNombre.setText("xxxxxxxxxx");
+					labelNombre.setText(cliente.getNombre());
 					labelNombre.setBounds(80, 44, 263, 16);
 					labelNombre.setFont(new java.awt.Font("Segoe UI", 1, 12));
 				}
 				{
 					labelDireccion = new JLabel();
 					jPanel1.add(labelDireccion);
-					labelDireccion.setText("xxxxxxxxxx");
+					labelDireccion.setText(cliente.getDireccion());
 					labelDireccion.setBounds(80, 66, 263, 16);
 					labelDireccion
 							.setFont(new java.awt.Font("Segoe UI", 1, 12));
@@ -142,7 +160,7 @@ public class VRestLineas extends javax.swing.JFrame {
 				{
 					labelEmail = new JLabel();
 					jPanel1.add(labelEmail);
-					labelEmail.setText("xxxxxxxxxx");
+					labelEmail.setText(cliente.getEmail());
 					labelEmail.setBounds(80, 89, 263, 16);
 					labelEmail.setFont(new java.awt.Font("Segoe UI", 1, 12));
 				}
@@ -165,11 +183,12 @@ public class VRestLineas extends javax.swing.JFrame {
 					jScrollPane1.setBounds(12, 24, 336, 84);
 					{
 						TableModel jTable1Model = new DefaultTableModel(
-								new String[] { "Tel�fono", "Antiguedad",
-										"Activa", "Promoci�n" }, 2);
+								new String[] { "Telefono", "Antiguedad",
+										"Activa", "Promocion" }, 1);
 						tablaLineas = new JTable();
 						jScrollPane1.setViewportView(tablaLineas);
 						tablaLineas.setModel(jTable1Model);
+						cargarLineas();
 					}
 				}
 				{
@@ -179,11 +198,6 @@ public class VRestLineas extends javax.swing.JFrame {
 					botonFacturas.setBounds(234, 113, 114, 23);
 					botonFacturas.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out
-									.println("botonFacturas.actionPerformed, event="
-											+ evt);
-							// TODO add your code for
-							// botonFacturas.actionPerformed
 							botonVerFacturas();
 						}
 					});
@@ -195,11 +209,6 @@ public class VRestLineas extends javax.swing.JFrame {
 					botonEditar.setBounds(159, 113, 70, 23);
 					botonEditar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
-							System.out
-									.println("botonEditar.actionPerformed, event="
-											+ evt);
-							// TODO add your code for
-							// botonEditar.actionPerformed
 							botonEditar();
 						}
 					});
@@ -271,7 +280,6 @@ public class VRestLineas extends javax.swing.JFrame {
 							System.out
 									.println("botonNueva.actionPerformed, event="
 											+ evt);
-							// TODO add your code for botonNueva.actionPerformed
 							botonNueva();
 						}
 					});
@@ -286,8 +294,6 @@ public class VRestLineas extends javax.swing.JFrame {
 							System.out
 									.println("botonGuardar.actionPerformed, event="
 											+ evt);
-							// TODO add your code for
-							// botonGuardar.actionPerformed
 							botonGuardar();
 						}
 					});
@@ -317,10 +323,6 @@ public class VRestLineas extends javax.swing.JFrame {
 				botonCerrar.setBounds(295, 476, 78, 23);
 				botonCerrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						System.out
-								.println("botonCerrar.actionPerformed, event="
-										+ evt);
-						// TODO add your code for botonCerrar.actionPerformed
 						botonCerrar();
 					}
 				});
@@ -328,28 +330,106 @@ public class VRestLineas extends javax.swing.JFrame {
 			pack();
 			this.setSize(400, 544);
 		} catch (Exception e) {
-			// add your error handling code here
 			e.printStackTrace();
 		}
 	}
-
+	
 	private void botonEditar() {
+		int selectedRow = tablaLineas.getSelectedRow();
+		if (selectedRow < 0) {
+			JOptionPane.showMessageDialog(this,
+					"No has seleccionado ningún terminal para editar",
+					"Atención", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
 
+		Linea linea = lineas[selectedRow];
+
+		cajaTelefono.setText(linea.getTelefono());
+		cajaAntiguedad.setText(linea.getAntiguedad());
+		cajaPromocion.setText(linea.getPromocion());
+		checkActiva.setSelected(linea.isActiva());
+		cajaVoz.setText(linea.getTarifaVoz());
+		cajaDatos.setText(linea.getTarifaDatos());
 	}
 
 	private void botonVerFacturas() {
+		int selectedRow = tablaLineas.getSelectedRow();
+		if (selectedRow < 0) {
+			JOptionPane.showMessageDialog(this,
+					"No has seleccionado ninguna factura para editar",
+					"Atención", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
 
+		Linea linea = lineas[selectedRow];
+		VRestFacturas inst = new VRestFacturas(linea);
+		inst.setLocationRelativeTo(null);
+		inst.setVisible(true);
 	}
 
 	private void botonNueva() {
-
+		Linea linea = new Linea(cajaTelefono.getText(),
+				cajaAntiguedad.getText(), checkActiva.isSelected(),
+				cajaVoz.getText(), cajaDatos.getText(),
+				cajaPromocion.getText(), cliente.getDni());
+		try {
+			Singleton.getInstance().path("rest").path("clientes")
+					.path(cliente.getDni()).path("lineas")
+					.type(MediaType.APPLICATION_XML)
+					.accept(MediaType.APPLICATION_JSON).post(linea);
+			System.out.println("Linea creada correctamente");
+		} catch (UniformInterfaceException e) {
+			ClientResponse r = e.getResponse();
+			JOptionPane.showMessageDialog(VRestLineas.this,
+					r.getEntity(String.class), "Error " + r.getStatus(),
+					JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	private void botonGuardar() {
-
+		String idLinea = cajaTelefono.getText();
+		Linea linea = new Linea(cajaTelefono.getText(),
+				cajaAntiguedad.getText(), checkActiva.isSelected(),
+				cajaVoz.getText(), cajaDatos.getText(),
+				cajaPromocion.getText(), cliente.getDni());
+		try {
+			Singleton.getInstance().path("rest").path("lineas").path(idLinea)
+					.type(MediaType.APPLICATION_XML)
+					.accept(MediaType.APPLICATION_JSON).put(linea);
+			System.out.println("Linea editada correctamente");
+		} catch (UniformInterfaceException e) {
+			ClientResponse r = e.getResponse();
+			JOptionPane.showMessageDialog(VRestLineas.this,
+					r.getEntity(String.class), "Error " + r.getStatus(),
+					JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	private void botonCerrar() {
+		System.exit(0);
+	}
 
+	private void cargarLineas() {
+		try {
+			Linea lineas[] = Singleton.getInstance().path("rest")
+					.path("clientes").path(cliente.getDni()).path("lineas")
+					.accept(MediaType.APPLICATION_XML).get(Linea[].class);
+			this.lineas = lineas;
+
+			DefaultTableModel tableModel = (DefaultTableModel) tablaLineas
+					.getModel();
+			tableModel.getDataVector().removeAllElements();
+			for (int i = 0; i < lineas.length; i++) {
+				tableModel.insertRow(i, new Object[] { lineas[i].getTelefono(),
+						lineas[i].getAntiguedad(), lineas[i].isActiva() + "",
+						lineas[i].getPromocion() });
+			}
+		} catch (UniformInterfaceException e) {
+			ClientResponse r = e.getResponse();
+			JOptionPane.showMessageDialog(VRestLineas.this,
+					r.getEntity(String.class), "Error " + r.getStatus(),
+					JOptionPane.ERROR_MESSAGE);
+		}
 	}
 }
