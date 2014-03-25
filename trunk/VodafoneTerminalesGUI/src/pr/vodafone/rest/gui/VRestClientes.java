@@ -364,7 +364,7 @@ public class VRestClientes extends javax.swing.JFrame {
 
 	private void botonEditar() {
 		int selectedRow = tablaClientes.getSelectedRow();
-		if (selectedRow == 0) {
+		if (selectedRow == -1) {
 			JOptionPane.showMessageDialog(this,
 					"SELECCIONE UN TERMINAL",
 					"ATENCION", JOptionPane.WARNING_MESSAGE);
