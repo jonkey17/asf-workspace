@@ -333,7 +333,7 @@ public class VRestLineas extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void botonEditar() {
 		int selectedRow = tablaLineas.getSelectedRow();
 		if (selectedRow < 0) {
@@ -366,6 +366,7 @@ public class VRestLineas extends javax.swing.JFrame {
 		VRestFacturas inst = new VRestFacturas(linea);
 		inst.setLocationRelativeTo(null);
 		inst.setVisible(true);
+		this.dispose();
 	}
 
 	private void botonNueva() {
@@ -379,6 +380,7 @@ public class VRestLineas extends javax.swing.JFrame {
 					.type(MediaType.APPLICATION_XML)
 					.accept(MediaType.APPLICATION_JSON).post(linea);
 			System.out.println("Linea creada correctamente");
+			anyadirLinea(linea);
 		} catch (UniformInterfaceException e) {
 			ClientResponse r = e.getResponse();
 			JOptionPane.showMessageDialog(VRestLineas.this,
@@ -398,6 +400,7 @@ public class VRestLineas extends javax.swing.JFrame {
 					.type(MediaType.APPLICATION_XML)
 					.accept(MediaType.APPLICATION_JSON).put(linea);
 			System.out.println("Linea editada correctamente");
+			editarLineas(linea);
 		} catch (UniformInterfaceException e) {
 			ClientResponse r = e.getResponse();
 			JOptionPane.showMessageDialog(VRestLineas.this,
@@ -416,15 +419,7 @@ public class VRestLineas extends javax.swing.JFrame {
 					.path("clientes").path(cliente.getDni()).path("lineas")
 					.accept(MediaType.APPLICATION_XML).get(Linea[].class);
 			this.lineas = lineas;
-
-			DefaultTableModel tableModel = (DefaultTableModel) tablaLineas
-					.getModel();
-			tableModel.getDataVector().removeAllElements();
-			for (int i = 0; i < lineas.length; i++) {
-				tableModel.insertRow(i, new Object[] { lineas[i].getTelefono(),
-						lineas[i].getAntiguedad(), lineas[i].isActiva() + "",
-						lineas[i].getPromocion() });
-			}
+			actualizarTabla(lineas);
 		} catch (UniformInterfaceException e) {
 			ClientResponse r = e.getResponse();
 			JOptionPane.showMessageDialog(VRestLineas.this,
@@ -432,4 +427,40 @@ public class VRestLineas extends javax.swing.JFrame {
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}
+
+	private void actualizarTabla(Linea lineas[]) {
+		DefaultTableModel tableModel = (DefaultTableModel) tablaLineas
+				.getModel();
+		tableModel.getDataVector().removeAllElements();
+		for (int i = 0; i < lineas.length; i++) {
+			tableModel.insertRow(i, new Object[] { lineas[i].getTelefono(),
+					lineas[i].getAntiguedad(), lineas[i].isActiva() + "",
+					lineas[i].getPromocion() });
+		}
+		this.lineas = lineas;
+	}
+	
+	private void editarLineas(Linea linea){
+		for(int i=0; i<this.lineas.length; i++){
+			if(this.lineas[i].getTelefono().equals(linea.getTelefono())){
+				this.lineas[i].setTelefono(linea.getTelefono());
+				this.lineas[i].setAntiguedad(linea.getAntiguedad());
+				this.lineas[i].setTarifaVoz(linea.getTarifaVoz());
+				this.lineas[i].setTarifaDatos(linea.getTarifaDatos());
+				this.lineas[i].setPromocion(linea.getPromocion());
+				this.lineas[i].setActiva(linea.isActiva());
+			}
+		}
+		actualizarTabla(this.lineas);
+	}
+	
+	private void anyadirLinea(Linea linea){
+		Linea[] nuevasLineas = new Linea[this.lineas.length + 1];
+		for(int i=0; i<this.lineas.length; i++){
+			nuevasLineas[i] = this.lineas[i];
+		}
+		nuevasLineas[this.lineas.length] = linea;
+		actualizarTabla(nuevasLineas);
+	}
+
 }
