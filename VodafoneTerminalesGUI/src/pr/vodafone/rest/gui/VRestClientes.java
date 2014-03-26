@@ -354,6 +354,7 @@ public class VRestClientes extends javax.swing.JFrame {
 				dtm.addRow(cliente);
 				listaActualizadaClientes.add(arrayClientes[i]);
 			}
+			
 		}catch(UniformInterfaceException e){ // if code != 20x exception is thrown
 			ClientResponse r = e.getResponse();
 			System.out.println("todos.GET('application/xml').status: " + r.getStatus());
@@ -366,7 +367,7 @@ public class VRestClientes extends javax.swing.JFrame {
 		int selectedRow = tablaClientes.getSelectedRow();
 		if (selectedRow == -1) {
 			JOptionPane.showMessageDialog(this,
-					"SELECCIONE UN TERMINAL",
+					"SELECCIONE UN CLIENTE",
 					"ATENCION", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
@@ -404,7 +405,9 @@ public class VRestClientes extends javax.swing.JFrame {
 			listaActualizadaClientes.add(c);
 			DefaultTableModel dtm = (DefaultTableModel)tablaClientes.getModel();
 			String[]cliente = {c.getDni(),c.getNombre(),c.getDireccion(),c.getEmail()};
+			JOptionPane.showMessageDialog(VRestClientes.this, "CLIENTE INSERTADO CORRECTAMENTE", "ATENCION", JOptionPane.ERROR_MESSAGE);
 			dtm.addRow(cliente);
+			botonTodos();
 		}else{ // Or code 409 == resource already exists 
 			System.out.println("todos.POST('application/xml').status: " + cr1.getStatus());
 			System.out.println("todos.POST('application/xml').entity: " + cr1.getEntity(String.class));
@@ -425,11 +428,12 @@ public class VRestClientes extends javax.swing.JFrame {
 			Singleton.getInstance().path("rest").path("clientes").path(c.getDni())
 					.type(MediaType.APPLICATION_XML)
 					.accept(MediaType.APPLICATION_JSON).put(c);
-			System.out.println("Linea editada correctamente");
 			Cliente c2 = listaActualizadaClientes.get(tablaClientes.getSelectedRow());
 			c2.setDireccion(c.getDireccion());
 			c2.setEmail(c.getEmail());
 			c2.setNombre(c.getNombre());
+			JOptionPane.showMessageDialog(VRestClientes.this, "CLIENTE MODIFICADO CORRECTAMENTE", "ATENCION", JOptionPane.ERROR_MESSAGE);
+			botonTodos();
 		} catch (UniformInterfaceException e) {
 			ClientResponse r = e.getResponse();
 			JOptionPane.showMessageDialog(VRestClientes.this, r.getEntity(String.class), "Error " + r.getStatus(), JOptionPane.ERROR_MESSAGE);
