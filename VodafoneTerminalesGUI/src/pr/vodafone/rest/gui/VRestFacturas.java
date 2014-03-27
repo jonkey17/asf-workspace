@@ -395,7 +395,6 @@ public class VRestFacturas extends javax.swing.JFrame {
 		try{
 		DefaultTableModel tableModel = (DefaultTableModel) tablaFacturas.getModel();
 		String idFactura=tableModel.getValueAt(tablaFacturas.getSelectedRow(), 0)+"";
-		System.out.println(idFactura);
 		Singleton.getInstance().path("rest").path("facturas").path(idFactura).delete();
 		JOptionPane.showMessageDialog(VRestFacturas.this, "Factura eliminada correctamente", "Eliminada", JOptionPane.INFORMATION_MESSAGE);
 		System.out.println("Factura "+ idFactura+ " eliminada");
