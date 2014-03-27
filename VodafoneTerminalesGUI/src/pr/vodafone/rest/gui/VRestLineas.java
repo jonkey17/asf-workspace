@@ -338,7 +338,7 @@ public class VRestLineas extends javax.swing.JFrame {
 		int selectedRow = tablaLineas.getSelectedRow();
 		if (selectedRow < 0) {
 			JOptionPane.showMessageDialog(this,
-					"No has seleccionado ningún terminal para editar",
+					"No has seleccionado ninguna linea para editar",
 					"Atención", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
@@ -357,7 +357,7 @@ public class VRestLineas extends javax.swing.JFrame {
 		int selectedRow = tablaLineas.getSelectedRow();
 		if (selectedRow < 0) {
 			JOptionPane.showMessageDialog(this,
-					"No has seleccionado ninguna factura para editar",
+					"No has seleccionado ninguna linea para ver sus facturas",
 					"Atención", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
@@ -381,6 +381,10 @@ public class VRestLineas extends javax.swing.JFrame {
 					.accept(MediaType.APPLICATION_JSON).post(linea);
 			System.out.println("Linea creada correctamente");
 			anyadirLinea(linea);
+			vaciarCampos();
+			JOptionPane.showMessageDialog(this,
+					"Linea creada correctamente.",
+					"Correcto", JOptionPane.INFORMATION_MESSAGE);
 		} catch (UniformInterfaceException e) {
 			ClientResponse r = e.getResponse();
 			JOptionPane.showMessageDialog(VRestLineas.this,
@@ -401,6 +405,10 @@ public class VRestLineas extends javax.swing.JFrame {
 					.accept(MediaType.APPLICATION_JSON).put(linea);
 			System.out.println("Linea editada correctamente");
 			editarLineas(linea);
+			vaciarCampos();
+			JOptionPane.showMessageDialog(this,
+					"Linea editada correctamente.",
+					"Correcto", JOptionPane.INFORMATION_MESSAGE);
 		} catch (UniformInterfaceException e) {
 			ClientResponse r = e.getResponse();
 			JOptionPane.showMessageDialog(VRestLineas.this,
@@ -461,6 +469,14 @@ public class VRestLineas extends javax.swing.JFrame {
 		}
 		nuevasLineas[this.lineas.length] = linea;
 		actualizarTabla(nuevasLineas);
+	}
+	
+	private void vaciarCampos(){
+		cajaTelefono.setText("");
+		cajaAntiguedad.setText("");
+		cajaDatos.setText("");
+		cajaVoz.setText("");
+		cajaPromocion.setText("");
 	}
 
 }
