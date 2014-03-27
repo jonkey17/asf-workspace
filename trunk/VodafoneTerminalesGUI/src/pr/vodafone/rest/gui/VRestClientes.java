@@ -405,9 +405,13 @@ public class VRestClientes extends javax.swing.JFrame {
 			listaActualizadaClientes.add(c);
 			DefaultTableModel dtm = (DefaultTableModel)tablaClientes.getModel();
 			String[]cliente = {c.getDni(),c.getNombre(),c.getDireccion(),c.getEmail()};
-			JOptionPane.showMessageDialog(VRestClientes.this, "CLIENTE INSERTADO CORRECTAMENTE", "ATENCION", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(VRestClientes.this, "CLIENTE INSERTADO CORRECTAMENTE", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
 			dtm.addRow(cliente);
 			botonTodos();
+			cajaDireccion.setText("");
+			cajaEmail.setText("");
+			cajaNombre.setText("");
+			cajaDni.setText("");
 		}else{ // Or code 409 == resource already exists 
 			System.out.println("todos.POST('application/xml').status: " + cr1.getStatus());
 			System.out.println("todos.POST('application/xml').entity: " + cr1.getEntity(String.class));
@@ -432,8 +436,12 @@ public class VRestClientes extends javax.swing.JFrame {
 			c2.setDireccion(c.getDireccion());
 			c2.setEmail(c.getEmail());
 			c2.setNombre(c.getNombre());
-			JOptionPane.showMessageDialog(VRestClientes.this, "CLIENTE MODIFICADO CORRECTAMENTE", "ATENCION", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(VRestClientes.this, "CLIENTE MODIFICADO CORRECTAMENTE", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
 			botonTodos();
+			cajaDireccion.setText("");
+			cajaEmail.setText("");
+			cajaNombre.setText("");
+			cajaDni.setText("");
 		} catch (UniformInterfaceException e) {
 			ClientResponse r = e.getResponse();
 			JOptionPane.showMessageDialog(VRestClientes.this, r.getEntity(String.class), "Error " + r.getStatus(), JOptionPane.ERROR_MESSAGE);
