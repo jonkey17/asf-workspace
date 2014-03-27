@@ -397,6 +397,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 		String idFactura=tableModel.getValueAt(tablaFacturas.getSelectedRow(), 0)+"";
 		System.out.println(idFactura);
 		Singleton.getInstance().path("rest").path("facturas").path(idFactura).delete();
+		JOptionPane.showMessageDialog(VRestFacturas.this, "Factura eliminada correctamente", "Eliminada", JOptionPane.OK_OPTION);
 		System.out.println("Factura "+ idFactura+ " eliminada");
 		}catch(UniformInterfaceException e){
 			ClientResponse r = e.getResponse();
@@ -410,6 +411,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 		try{
 			Singleton.getInstance().path("rest").path("lineas").path(factura.getTelefono()).path("facturas").type(MediaType.APPLICATION_XML).accept(MediaType.APPLICATION_JSON).post(factura);
 			System.out.println("Factura creada correctamente");
+			JOptionPane.showMessageDialog(VRestFacturas.this, "Nueva factura creada correctamente", "Guardado", JOptionPane.INFORMATION_MESSAGE);
 		}catch(UniformInterfaceException e){
 			ClientResponse r = e.getResponse();
 			JOptionPane.showMessageDialog(VRestFacturas.this, r.getEntity(String.class), "Error "+ r.getStatus(), JOptionPane.ERROR_MESSAGE);
@@ -421,6 +423,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 		Factura factura= new Factura(Integer.parseInt(idFactura), cajaFecha.getText(), cajaPeriodo.getText(), Float.parseFloat(cajaImporte.getText()),linea.getTelefono());
 		try{
 			Singleton.getInstance().path("rest").path("facturas").path(idFactura).type(MediaType.APPLICATION_XML).accept(MediaType.APPLICATION_JSON).put(factura);
+			JOptionPane.showMessageDialog(VRestFacturas.this, "La factura de se ha editado correctamente", "Editado", JOptionPane.OK_OPTION);
 			System.out.println("Factura editada correctamente");
 		}catch(UniformInterfaceException e){
 			ClientResponse r = e.getResponse();
