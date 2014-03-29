@@ -68,6 +68,8 @@ public class VRestFacturas extends javax.swing.JFrame {
 	private JLabel jLabel1;
 	
 	private Linea linea;
+	
+	private javax.swing.JFrame before;
 
 	/**
 	 * Auto-generated main method to display this JFrame
@@ -76,24 +78,25 @@ public class VRestFacturas extends javax.swing.JFrame {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				Linea linea= new Linea("666222000", "mucha", true, "koko", "popo", "lolo", "21232121-X");
-				VRestFacturas inst = new VRestFacturas(linea);
+				VRestFacturas inst = new VRestFacturas(null, linea);
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 			}
 		});
 	}
 
-	public VRestFacturas(Linea linea) {
+	public VRestFacturas(javax.swing.JFrame before, Linea linea) {
 		super();
 		this.linea=linea;
+		this.before = before;
 		initGUI();
 	}
 
 	private void initGUI() {
 		try {
-			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			getContentPane().setLayout(null);
-			this.setTitle("Gestión de Facturas");
+			this.setTitle("Gestiï¿½n de Facturas");
 			{
 				jPanel1 = new JPanel();
 				getContentPane().add(jPanel1);
@@ -101,7 +104,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 				jPanel1.setFont(new java.awt.Font("Dialog", 1, 10));
 				jPanel1.setLayout(null);
 				jPanel1.setBorder(BorderFactory
-						.createTitledBorder(null, "Datos Línea",
+						.createTitledBorder(null, "Datos Lï¿½nea",
 								TitledBorder.LEADING,
 								TitledBorder.DEFAULT_POSITION,
 								new java.awt.Font("Segoe UI", 1, 10),
@@ -109,7 +112,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 				{
 					jLabel1 = new JLabel();
 					jPanel1.add(jLabel1);
-					jLabel1.setText("Teléfono:");
+					jLabel1.setText("Telï¿½fono:");
 					jLabel1.setBounds(11, 22, 70, 16);
 				}
 				{
@@ -162,7 +165,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 				{
 					jLabel10 = new JLabel();
 					jPanel1.add(jLabel10);
-					jLabel10.setText("Promoción:");
+					jLabel10.setText("Promociï¿½n:");
 					jLabel10.setBounds(195, 22, 65, 16);
 				}
 				{
@@ -221,8 +224,6 @@ public class VRestFacturas extends javax.swing.JFrame {
 						public void actionPerformed(ActionEvent evt) {
 							System.out.println("botonBorrar.actionPerformed, event="
 											+ evt);
-							// TODO add your code for
-							// botonBorrar.actionPerformed
 							if(comprobarSelecion()){
 								botonBorrar();
 							}	
@@ -240,8 +241,6 @@ public class VRestFacturas extends javax.swing.JFrame {
 							System.out
 									.println("botonEditar.actionPerformed, event="
 											+ evt);
-							// TODO add your code for
-							// botonEditar.actionPerformed
 							if(comprobarSelecion()){
 								botonEditar();
 							}										
@@ -256,7 +255,7 @@ public class VRestFacturas extends javax.swing.JFrame {
 				jPanel3.setBounds(13, 297, 359, 145);
 				jPanel3.setLayout(null);
 				jPanel3.setBorder(BorderFactory
-						.createTitledBorder(null, "Edición",
+						.createTitledBorder(null, "Ediciï¿½n",
 								TitledBorder.LEADING,
 								TitledBorder.DEFAULT_POSITION,
 								new java.awt.Font("Segoe UI", 1, 10),
@@ -315,7 +314,6 @@ public class VRestFacturas extends javax.swing.JFrame {
 							System.out
 									.println("botonNueva.actionPerformed, event="
 											+ evt);
-							// TODO add your code for botonNueva.actionPerformed
 							botonNueva();
 							peticionGet(linea.getTelefono());
 						}
@@ -331,8 +329,6 @@ public class VRestFacturas extends javax.swing.JFrame {
 							System.out
 									.println("botonGuardar.actionPerformed, event="
 											+ evt);
-							// TODO add your code for
-							// botonGuardar.actionPerformed
 							botonGuardar();
 							peticionGet(linea.getTelefono());
 						}
@@ -342,14 +338,13 @@ public class VRestFacturas extends javax.swing.JFrame {
 			{
 				botonCerrar = new JButton();
 				getContentPane().add(botonCerrar);
-				botonCerrar.setText("Cerrar");
+				botonCerrar.setText("Atras");
 				botonCerrar.setBounds(294, 450, 79, 23);
 				botonCerrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						System.out
 								.println("botonCerrar.actionPerformed, event="
 										+ evt);
-						// TODO add your code for botonCerrar.actionPerformed
 						botonCerrar();
 					}
 				});
@@ -435,12 +430,17 @@ public class VRestFacturas extends javax.swing.JFrame {
 	}
 
 	private void botonCerrar() {
-		dispose();
+		if (this.before != null) {
+			this.setVisible(false);
+			before.setVisible(true);
+		} else {
+			System.exit(0);
+		}
 	}
 	
 	private boolean comprobarSelecion(){
 		if(tablaFacturas.getSelectedRow()<0){
-			JOptionPane.showMessageDialog(VRestFacturas.this, "No has seleccionado ninguna factura", "Atención", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(VRestFacturas.this, "No has seleccionado ninguna factura", "Atenciï¿½n", JOptionPane.WARNING_MESSAGE);
 			return false;
 		}else{
 			return true;
