@@ -20,12 +20,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.ws.rs.core.MediaType;
 
+import pr.vodafone.rest.data.Cliente;
+import pr.vodafone.rest.pattern.Singleton;
+
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.UniformInterfaceException;
-
-import pr.vodafone.rest.data.Cliente;
-import pr.vodafone.rest.data.Linea;
-import pr.vodafone.rest.pattern.Singleton;
 
 /**
  * This code was edited or generated using CloudGarden's Jigloo SWT/Swing GUI
@@ -82,7 +81,7 @@ public class VRestClientes extends javax.swing.JFrame {
 
 	private void initGUI() {
 		try {
-			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			getContentPane().setLayout(null);
 			this.setTitle("Gesti�n de Clientes");
 			{
@@ -118,8 +117,6 @@ public class VRestClientes extends javax.swing.JFrame {
 							System.out
 									.println("botonBuscar.actionPerformed, event="
 											+ evt);
-							// TODO add your code for
-							// botonBuscar.actionPerformed
 							botonBuscar();
 						}
 					});
@@ -134,7 +131,6 @@ public class VRestClientes extends javax.swing.JFrame {
 							System.out
 									.println("botonTodos.actionPerformed, event="
 											+ evt);
-							// TODO add your code for botonTodos.actionPerformed
 							botonTodos();
 						}
 					});
@@ -175,8 +171,6 @@ public class VRestClientes extends javax.swing.JFrame {
 							System.out
 									.println("botonLineas.actionPerformed, event="
 											+ evt);
-							// TODO add your code for
-							// botonLineas.actionPerformed
 							botonVerLineas();
 						}
 					});
@@ -191,8 +185,6 @@ public class VRestClientes extends javax.swing.JFrame {
 							System.out
 									.println("botonEditar.actionPerformed, event="
 											+ evt);
-							// TODO add your code for
-							// botonEditar.actionPerformed
 							botonEditar();
 						}
 					});
@@ -264,7 +256,6 @@ public class VRestClientes extends javax.swing.JFrame {
 							System.out
 									.println("botonNuevo.actionPerformed, event="
 											+ evt);
-							// TODO add your code for botonNuevo.actionPerformed
 							botonNuevo();
 						}
 					});
@@ -279,8 +270,6 @@ public class VRestClientes extends javax.swing.JFrame {
 							System.out
 									.println("botonGuardar.actionPerformed, event="
 											+ evt);
-							// TODO add your code for
-							// botonGuardar.actionPerformed
 							botonGuardar();
 						}
 					});
@@ -295,7 +284,6 @@ public class VRestClientes extends javax.swing.JFrame {
 					public void actionPerformed(ActionEvent evt) {
 						System.out.println("botonSalir.actionPerformed, event="
 								+ evt);
-						// TODO add your code for botonSalir.actionPerformed
 						botonSalir();
 					}
 				});
@@ -367,8 +355,8 @@ public class VRestClientes extends javax.swing.JFrame {
 		int selectedRow = tablaClientes.getSelectedRow();
 		if (selectedRow == -1) {
 			JOptionPane.showMessageDialog(this,
-					"SELECCIONE UN CLIENTE",
-					"ATENCION", JOptionPane.WARNING_MESSAGE);
+					"Seleccione un cliente",
+					"Atencion", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 
@@ -382,10 +370,11 @@ public class VRestClientes extends javax.swing.JFrame {
 
 	private void botonVerLineas() {
 		Cliente clienteSeleccionado = listaActualizadaClientes.get(tablaClientes.getSelectedRow());
-		VRestLineas ventana = new VRestLineas(clienteSeleccionado);
+		VRestLineas ventana = new VRestLineas(this, clienteSeleccionado);
 		System.out.println("Cliente mandado a Ibai: "+clienteSeleccionado.toString());
-		ventana.setVisible(true);
+		ventana.setLocationRelativeTo(null);
 		this.setVisible(false);
+		ventana.setVisible(true);
 	}
 
 	private void botonNuevo() {
@@ -405,7 +394,7 @@ public class VRestClientes extends javax.swing.JFrame {
 			listaActualizadaClientes.add(c);
 			DefaultTableModel dtm = (DefaultTableModel)tablaClientes.getModel();
 			String[]cliente = {c.getDni(),c.getNombre(),c.getDireccion(),c.getEmail()};
-			JOptionPane.showMessageDialog(VRestClientes.this, "CLIENTE INSERTADO CORRECTAMENTE", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(VRestClientes.this, "Cliente insertado correctamente", "Atencion", JOptionPane.INFORMATION_MESSAGE);
 			dtm.addRow(cliente);
 			botonTodos();
 			cajaDireccion.setText("");
@@ -415,7 +404,7 @@ public class VRestClientes extends javax.swing.JFrame {
 		}else{ // Or code 409 == resource already exists 
 			System.out.println("todos.POST('application/xml').status: " + cr1.getStatus());
 			System.out.println("todos.POST('application/xml').entity: " + cr1.getEntity(String.class));
-			JOptionPane.showMessageDialog(VRestClientes.this, "CLIENTE EXISTENTE, NO SE HA PODIDO INSERTAR", "ATENCION", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(VRestClientes.this, "El cliente ya existe, no se puede crear de nuevo", "Atencion", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
@@ -436,7 +425,7 @@ public class VRestClientes extends javax.swing.JFrame {
 			c2.setDireccion(c.getDireccion());
 			c2.setEmail(c.getEmail());
 			c2.setNombre(c.getNombre());
-			JOptionPane.showMessageDialog(VRestClientes.this, "CLIENTE MODIFICADO CORRECTAMENTE", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(VRestClientes.this, "Cliente modificado correctamente", "Atencion", JOptionPane.INFORMATION_MESSAGE);
 			botonTodos();
 			cajaDireccion.setText("");
 			cajaEmail.setText("");

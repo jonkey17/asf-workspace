@@ -71,6 +71,8 @@ public class VRestLineas extends javax.swing.JFrame {
 
 	private Cliente cliente;
 	private Linea[] lineas;
+	
+	private javax.swing.JFrame before;
 
 	/**
 	 * Auto-generated main method to display this JFrame
@@ -78,25 +80,25 @@ public class VRestLineas extends javax.swing.JFrame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				// TODO Recibir cliente
 				Cliente cli = new Cliente("111", "Ibai", "Direccion de Ibai",
 						"Email de Ibai");
-				VRestLineas inst = new VRestLineas(cli);
+				VRestLineas inst = new VRestLineas(null, cli);
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 			}
 		});
 	}
 
-	public VRestLineas(Cliente cliente) {
+	public VRestLineas(javax.swing.JFrame before, Cliente cliente) {
 		super();
 		this.cliente = cliente;
+		this.before = before;
 		initGUI();
 	}
 
 	private void initGUI() {
 		try {
-			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			getContentPane().setLayout(null);
 			this.setTitle("Gesti�n de Lineas");
 			{
@@ -319,7 +321,7 @@ public class VRestLineas extends javax.swing.JFrame {
 			{
 				botonCerrar = new JButton();
 				getContentPane().add(botonCerrar);
-				botonCerrar.setText("Cerrar");
+				botonCerrar.setText("Atras");
 				botonCerrar.setBounds(295, 476, 78, 23);
 				botonCerrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
@@ -363,10 +365,10 @@ public class VRestLineas extends javax.swing.JFrame {
 		}
 
 		Linea linea = lineas[selectedRow];
-		VRestFacturas inst = new VRestFacturas(linea);
+		VRestFacturas inst = new VRestFacturas(this, linea);
+		this.setVisible(false);
 		inst.setLocationRelativeTo(null);
 		inst.setVisible(true);
-		this.dispose();
 	}
 
 	private void botonNueva() {
@@ -418,7 +420,12 @@ public class VRestLineas extends javax.swing.JFrame {
 	}
 
 	private void botonCerrar() {
-		System.exit(0);
+		if (this.before != null) {
+			this.setVisible(false);
+			before.setVisible(true);
+		} else {
+			System.exit(0);
+		}
 	}
 
 	private void cargarLineas() {
