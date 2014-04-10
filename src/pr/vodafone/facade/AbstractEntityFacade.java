@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import pr.vodafone.persistenceunitsingleton.Singleton;
+
 public class AbstractEntityFacade<T> {
 
 	private Class<T> entityClass;
@@ -13,7 +15,7 @@ public class AbstractEntityFacade<T> {
 	private EntityManagerFactory emf;
 
 	public AbstractEntityFacade(Class<T> entityClass) {
-		emf = Persistence.createEntityManagerFactory("VodafonePU");
+		emf = Singleton.getInstance();
 		em = emf.createEntityManager();
 		this.entityClass = entityClass;
 	}
