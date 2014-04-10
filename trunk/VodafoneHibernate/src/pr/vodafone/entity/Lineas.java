@@ -70,4 +70,13 @@ public class Lineas {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
+	@Override
+	public String toString() {
+		return "Lineas [telefono=" + telefono + ", antiguedad=" + antiguedad
+				+ ", activa=" + activa + ", tarifaVoz=" + tarifaVoz
+				+ ", tarifaDatos=" + tarifaDatos + ", promocion=" + promocion
+				+ ", dni=" + dni + "]";
+	}
+	
+	
 }

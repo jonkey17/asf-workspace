@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import pr.vodafone.persistenceunitsingleton.Singleton;
+
 public class AbstractEntityFacade<T> {
 
 	private Class<T> entityClass;
@@ -13,6 +15,8 @@ public class AbstractEntityFacade<T> {
 	private EntityManagerFactory emf;
 
 	public AbstractEntityFacade(Class<T> entityClass) {
+		emf = Singleton.getInstance();
+		em = emf.createEntityManager();
 		this.entityClass = entityClass;
 	}
 
@@ -34,7 +38,6 @@ public class AbstractEntityFacade<T> {
 	}
 
 	public void remove(T entity) {
-
 		getEntityManager().getTransaction().begin();
 		getEntityManager().remove(getEntityManager().merge(entity));
 		getEntityManager().getTransaction().commit();
@@ -68,10 +71,6 @@ public class AbstractEntityFacade<T> {
 		q.setMaxResults(range[1] - range[0]);
 		q.setFirstResult(range[0]);
 		return q.getResultList();
-	}
-	
-	public void init(){
-		emf = Persistence.createEntityManagerFactory("VodafonePU");
 	}
 	
 	public void close(){

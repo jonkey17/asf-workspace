@@ -12,18 +12,18 @@ public class LineaFacade extends AbstractEntityFacade<Lineas> {
 
 	public List<Lineas> findAllByEstado(boolean activa) {
 		return getEntityManager().createQuery(
-				"select * from lineas where estado = " + activa)
+				"select object(o) from Lineas as o where o.activa = " + activa)
 				.getResultList();
 	}
 
 	public List<Lineas> findAllByNombre(String dni) {
 		return getEntityManager().createQuery(
-				"select * from lineas where dni = " + dni).getResultList();
+				"select object(o) from Lineas as o where o.dni = " + dni).getResultList();
 	}
 
 	public List<Lineas> findAllByNombreAndEstado(boolean activa, String dni) {
 		return getEntityManager().createQuery(
-				"select * from lineas where dni = " + dni + " and estado = "
+				"select object(o) from Lineas as o where o.dni = " + dni + " and o.activa = "
 						+ activa).getResultList();
 	}
 }

@@ -55,4 +55,11 @@ public class Clientes {
 		this.email = email;
 	}
 
+	@Override
+	public String toString() {
+		return "Clientes [dni=" + dni + ", nombre=" + nombre + ", direccion="
+				+ direccion + ", email=" + email + "]";
+	}
+
+	
 }
