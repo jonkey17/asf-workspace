@@ -62,5 +62,13 @@ public class Facturas {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+	
+	@Override
+	public String toString() {
+		return "Facturas [idFactura=" + idFactura + ", fecha=" + fecha
+				+ ", periodo=" + periodo + ", importe=" + importe
+				+ ", telefono=" + telefono + "]";
+	}
+	
 
 }
