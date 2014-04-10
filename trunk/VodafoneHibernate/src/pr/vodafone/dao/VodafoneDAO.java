@@ -13,6 +13,7 @@ public class VodafoneDAO {
 	
 
 	Lineas getLinea(String telf){
+		
 		LineaFacade lineaFacade = new LineaFacade();
 		lineaFacade.init();
 		Lineas linea = lineaFacade.find(telf);
