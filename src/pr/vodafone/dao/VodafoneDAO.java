@@ -83,35 +83,35 @@ public class VodafoneDAO {
 	
 	public static void main(String[] args) {
 		
-		System.out.println("Prueba método getLineas()");
+		System.out.println("Prueba mï¿½todo getLineas()");
 		List<Lineas> listaLineas = getLineas();
 		for(int k=0;k<listaLineas.size();k++)
 			System.out.println(listaLineas.get(k));
 		
-		System.out.println("\n Prueba método getLinea(666333000) ");
+		System.out.println("\n Prueba mï¿½todo getLinea(666333000) ");
 		Lineas linea = getLinea("666333000");
 		System.out.println(linea);
 		
-		System.out.println("\n Prueba método getLineasByEstado(true) ");
+		System.out.println("\n Prueba mï¿½todo getLineasByEstado(true) ");
 		List<Lineas> listaLineasByEstado = getLineasByEstado(true);
 		for(int k=0;k<listaLineasByEstado.size();k++)
 			System.out.println(listaLineasByEstado.get(k));
 		
-		System.out.println("\n Prueba método getLineasByCliente(111) ");
+		System.out.println("\n Prueba mï¿½todo getLineasByCliente(111) ");
 		List<Lineas> listaLineasByCliente = getLineasByCliente("111");
 		for(int k=0;k<listaLineasByCliente.size();k++)
 			System.out.println(listaLineasByCliente.get(k));
 		
-		System.out.println("\n Prueba método getLineasByClienteAndEstado(111,true) ");
+		System.out.println("\n Prueba mï¿½todo getLineasByClienteAndEstado(111,true) ");
 		List<Lineas> listaLineasByClienteAndEstado = getLineasByClienteAndEstado("111",true);
 		for(int k=0;k<listaLineasByClienteAndEstado.size();k++)
 			System.out.println(listaLineasByClienteAndEstado.get(k));
 		
-		System.out.println("\n Prueba método updateLinea(666111000, 23-12-1991, false, Ninguna ");
-		updateLinea("666111000", "23-01-1992", true, "Ninguna", "Si", "Consumo", "111");
-		System.out.println("Linea sin actualizar "+getLinea("666333000"));
+		System.out.println("\n Prueba mï¿½todo updateLinea(666111000, 23-12-1991, false, Ninguna ");
+		//updateLinea("666111000", "23-01-1992", true, "Ninguna", "Si", "Consumo", "111");
+		System.out.println("Linea sin actualizar "+getLinea("666111000"));
 		updateLinea("666111000", "23-12-1991", false, "Ninguna", "No", "Consumo", "111");
-		System.out.println("Linea actualizada "+getLinea("666333000"));
+		System.out.println("Linea actualizada "+getLinea("666111000"));
 		
 		Singleton.close();
 		
