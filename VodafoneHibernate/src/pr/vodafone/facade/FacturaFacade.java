@@ -3,7 +3,6 @@ package pr.vodafone.facade;
 import java.util.List;
 
 import pr.vodafone.entity.Facturas;
-import pr.vodafone.entity.Lineas;
 
 public class FacturaFacade extends AbstractEntityFacade<Facturas> {
 
