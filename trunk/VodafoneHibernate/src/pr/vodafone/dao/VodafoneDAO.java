@@ -169,6 +169,9 @@ public class VodafoneDAO {
 		}
 
 		Singleton.close();
+		
+		System.out.println();
+		System.out.println("Pruebas finalizadas");
 
 	}
 }
