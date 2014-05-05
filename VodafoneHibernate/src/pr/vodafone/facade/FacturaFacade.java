@@ -12,6 +12,7 @@ public class FacturaFacade extends AbstractEntityFacade<Facturas> {
 
 	public List<Facturas> findAllByLinea(String telefono) {
 		return getEntityManager().createQuery(
-				"select * from facturas where telefono = " + telefono).getResultList();
+				"select object(o) from Facturas as o where o.telefono = "
+						+ telefono).getResultList();
 	}
 }
