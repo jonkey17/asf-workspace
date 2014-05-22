@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="VodafoneStructs">
+    <wb-module deploy-name="VodafoneStruts">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="VodafoneStructs"/>
-        <property name="java-output-path" value="/VodafoneStructs/build/classes"/>
+        <property name="java-output-path" value="/VodafoneStruts/build/classes"/>
+        <property name="context-root" value="VodafoneStruts"/>
     </wb-module>
 </project-modules>
