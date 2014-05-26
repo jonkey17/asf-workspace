@@ -11,7 +11,7 @@
 		<default-interceptor-ref name="paramsPrepareParamsStack"/>
         
 		
-        <action name="facturaTel" class="acciones.FacturasAction">
+        <action name="facturasTel" class="acciones.FacturasAction">
 			<result>/jsp/facturaTel.jsp</result>
         </action>
 
