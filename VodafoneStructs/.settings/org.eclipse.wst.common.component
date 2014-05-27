@@ -2,6 +2,7 @@
     <wb-module deploy-name="VodafoneStruts">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/conf"/>
         <property name="java-output-path" value="/VodafoneStruts/build/classes"/>
         <property name="context-root" value="VodafoneStruts"/>
     </wb-module>
