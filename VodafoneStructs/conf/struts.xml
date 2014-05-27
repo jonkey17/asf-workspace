@@ -10,7 +10,10 @@
     <package name="default" extends="struts-default">
 		<default-interceptor-ref name="paramsPrepareParamsStack"/>
         
-		
+        
+		<action name="lineasTel" class="acciones.ModificarLineasAction">
+			<result>/jsp/lineaTel.jsp</result>
+        </action>
         <action name="facturasTel" class="acciones.FacturasAction">
 			<result>/jsp/facturaTel.jsp</result>
         </action>
