@@ -24,6 +24,20 @@
 			<result>/jsp/facturaTel.jsp</result>
         </action>
 
+        <action name="searchClient" class="acciones.ClienteAction">
+            <result  name="input">/jsp/idCliente.jsp</result>
+			<result  name="error">/jsp/idCliente.jsp</result>
+			<result>/jsp/idCliente.jsp</result>
+        </action>
+        
+        <action name="showModCliente" class="acciones.ModificarClienteAction">
+            <result>/jsp/modCliente.jsp</result>
+        </action>
+        
+        <action name="editModCliente" class="acciones.ModificarClienteAction">
+            <result  name="input">/jsp/modCliente.jsp</result>
+            <result>/jsp/idCliente.jsp</result>
+        </action>
         
     </package>
 
