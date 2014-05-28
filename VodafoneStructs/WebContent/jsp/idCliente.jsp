@@ -11,10 +11,9 @@
 			<h1><s:text name="label.idCliente.subject"/></h1>
 			<br>
 			<table class="borderAll">
-				<tr>
-			        <th><s:text name="label.dni"/></th>
-			        <td><s:textfield name="dni" label="%{getText('label.search.dni')}"/></td>
-			        <th><s:submit value="%{getText('label.search.button')}" align="right"/></th>
+				<tr>			      
+			        <td><s:textfield name="dni" label="%{getText('label.dni')}"/></td>
+			        <th><s:submit value="%{getText('label.button')}" align="right"/></th>
 			    </tr>
 			</table>
 			<br>
