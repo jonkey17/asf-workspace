@@ -16,13 +16,15 @@
 					<!--<s:fielderror />-->
 				</td>
 			</tr>
-			<s:textfield name="telefono" label="%{getText('label.telefono')}" value="telefono"/>
-			<s:textfield name="antiguedad" label="%{getText('label.antiguedad')}"/>
-			<s:textfield name="activo" label="%{getText('label.activa')}"/>
-			<s:textfield name="promocion" label="%{getText('label.promocion')}"/>
-			<s:textfield name="tarifaVoz" label="%{getText('label.tarifaVoz')}"/>
-			<s:textfield name="tarifaDatos" label="%{getText('label.tarifaDatos')}"/>
-			<s:textfield name="cliente" label="%{getText('label.cliente')}"/>
+			<s:textfield name="telefono" label="%{getText('label.telefono')}" value="%{linea.telefono}"/>
+			<s:textfield name="antiguedad" label="%{getText('label.antiguedad')}" value="%{linea.antiguedad}"/>
+			<%--<s:combobox name="activa" label="%{getText('label.activa')}" list="{'true','false'}" headerKey="-1" headerValue="elige" value="%{linea.activa}"></s:combobox>--%>
+			<s:select name="activa" label="%{getText('label.activa')}" list="{'true','false'}" headerKey="-1" value="%{linea.activa}"/>
+			<%-- <s:textfield name="activo" label="%{getText('label.activa')}" value="%{linea.activa}"/>--%>
+			<s:textfield name="promocion" label="%{getText('label.promocion')}" value="%{linea.promocion}"/>
+			<s:textfield name="tarifaVoz" label="%{getText('label.tarifaVoz')}" value="%{linea.tarifaVoz}"/>
+			<s:textfield name="tarifaDatos" label="%{getText('label.tarifaDatos')}" value="%{linea.tarifaDatos}"/>
+			<s:textfield name="cliente" label="%{getText('label.cliente')}" value="%{linea.dni}"/>
 			<s:submit value="%{getText('button.label.guardar')}" align="right"/>
 			<s:submit value="%{getText('button.label.cancel')}" align="right"/>
 		</s:form>
