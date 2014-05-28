@@ -9,11 +9,17 @@
     <constant name="struts.devMode" value="true" />
     <package name="default" extends="struts-default">
 		<default-interceptor-ref name="paramsPrepareParamsStack"/>
-        
-        
-		<action name="lineasTel" class="acciones.ModificarLineasAction">
+		
+		 <action name="showLineasTel" class="acciones.ModificarLineasAction">
 			<result>/jsp/lineaTel.jsp</result>
         </action>
+        
+        <action name="editLineasTel" class="acciones.ModificarLineasAction">
+            <result  name="input">/jsp/lineaTel.jsp</result>
+			<result  name="error">/jsp/lineaTel.jsp</result>	
+			<result>/jsp/facturaTel.jsp</result> <!-- Aqui poner el jsp de ellos -->
+        </action>
+        
         <action name="facturasTel" class="acciones.FacturasAction">
 			<result>/jsp/facturaTel.jsp</result>
         </action>

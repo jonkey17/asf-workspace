@@ -9,25 +9,25 @@
 		<div class="titleDiv"><s:text name="application.facturaTel.title"/></div>
 		<h1><s:text name="label.lineaTel.subject"/></h1>
 		<br/>
-		<s:form action="doLogin" method="POST">
+		<s:form action="editLineasTel" method="POST">
 			<tr>
 				<td colspan="2">
 					<s:actionerror />
 					<!--<s:fielderror />-->
 				</td>
 			</tr>
-			<s:textfield name="telefono" label="%{getText('label.telefono')}" value="%{linea.telefono}"/>
-			<s:textfield name="antiguedad" label="%{getText('label.antiguedad')}" value="%{linea.antiguedad}"/>
+			<s:textfield name="linea.telefono" label="%{getText('label.telefono')}" value="%{linea.telefono}"/>
+			<s:textfield name="linea.antiguedad" label="%{getText('label.antiguedad')}" value="%{linea.antiguedad}"/>
 			<%--<s:combobox name="activa" label="%{getText('label.activa')}" list="{'true','false'}" headerKey="-1" headerValue="elige" value="%{linea.activa}"></s:combobox>--%>
-			<s:select name="activa" label="%{getText('label.activa')}" list="{'true','false'}" headerKey="-1" value="%{linea.activa}"/>
+			<s:select name="linea.activa" label="%{getText('label.activa')}" list="{'true','false'}" headerKey="-1" value="%{linea.activa}"/>
 			<%-- <s:textfield name="activo" label="%{getText('label.activa')}" value="%{linea.activa}"/>--%>
-			<s:textfield name="promocion" label="%{getText('label.promocion')}" value="%{linea.promocion}"/>
-			<s:textfield name="tarifaVoz" label="%{getText('label.tarifaVoz')}" value="%{linea.tarifaVoz}"/>
-			<s:textfield name="tarifaDatos" label="%{getText('label.tarifaDatos')}" value="%{linea.tarifaDatos}"/>
-			<s:textfield name="cliente" label="%{getText('label.cliente')}" value="%{linea.dni}"/>
+			<s:textfield name="linea.promocion" label="%{getText('label.promocion')}" value="%{linea.promocion}"/>
+			<s:textfield name="linea.tarifaVoz" label="%{getText('label.tarifaVoz')}" value="%{linea.tarifaVoz}"/>
+			<s:textfield name="linea.tarifaDatos" label="%{getText('label.tarifaDatos')}" value="%{linea.tarifaDatos}"/>
+			<%--<s:textfield name="linea.dni" label="%{getText('label.cliente')}" value="%{linea.dni}"/>--%>
+			<s:select name="linea.dni" label="%{getText('label.cliente')}" list="clientes" listKey="dni" listValue="nombre" headerKey="-1" value="%{linea.dni}"/>
 			<s:submit value="%{getText('button.label.guardar')}" align="right"/>
-			<s:submit value="%{getText('button.label.cancel')}" align="right"/>
 		</s:form>
-		
+		<input type="button" onclick="location.href('facturasTel.action');" value="Cancel"/><%--Aqui poner el action de ellos --%>
 	</body>
 </html>

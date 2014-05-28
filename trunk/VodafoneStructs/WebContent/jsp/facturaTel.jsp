@@ -8,7 +8,6 @@
 	<body>
 		<div class="titleDiv"><s:text name="application.facturaTel.title"/></div>
 		<h1><s:text name="label.facturaTel.subject1"/></h1>
-		<br/>
 		<table class="borderAll">
 			<tr>
 		        <th><s:text name="label.telefono"/></th>
@@ -29,8 +28,13 @@
 		        <td><s:property value="linea.tarifaDatos"/></td>
 		    </tr>
 		</table>
-		<h1><s:text name="label.facturaTel.subject2"/></h1>
 		<br/>
+		<a href="showLineasTel.action">Volver al listado de líneas</a><%--Aqui poner action de ellos --%>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<h1><s:text name="label.facturaTel.subject2"/></h1>
 		<table class="borderAll">
 		    <tr>
 		        <th><s:text name="label.facturaTel.ref"/></th>
