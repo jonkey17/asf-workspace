@@ -24,13 +24,21 @@
 			<result>/jsp/facturaTel.jsp</result>
         </action>
 
-        <action name="searchClient" class="acciones.ClienteAction">
-            <result  name="input">/jsp/idCliente.jsp</result>
-			<result  name="error">/jsp/idCliente.jsp</result>
+        <action name="showSearchClient" class="acciones.ClienteAction" method="doShow">
 			<result>/jsp/idCliente.jsp</result>
         </action>
         
-        <action name="showModCliente" class="acciones.ModificarClienteAction">
+        <action name="searchClient" class="acciones.ClienteAction">
+            <result  name="input">/jsp/idCliente.jsp</result>
+			<result  name="error">/jsp/idCliente.jsp</result>
+			<result type="chain"> <param name="actionName">showLineasClient</param></result>
+        </action>
+        
+        <action name="showLineasClient" class="acciones.LineasAction">
+			<result>/jsp/lineasCliente.jsp</result>
+        </action>
+        
+        <action name="showModCliente" class="acciones.ModificarClienteAction" method="doShow">
             <result>/jsp/modCliente.jsp</result>
         </action>
         

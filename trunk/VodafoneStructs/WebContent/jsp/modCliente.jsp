@@ -14,19 +14,19 @@
 		<s:text name="label.modCliente.subject" />
 	</h1>
 	<br>
-	<s:form action="modCliente" method="POST">
+	<s:form action="editModCliente" method="POST">
 		<tr>
 			<td colspan="2"><s:actionerror /> <!--<s:fielderror />--></td>
 		</tr>
 
 		<s:textfield name="label.dni"
-			label="%{getText('label.modCliente.dni')}" />
+			label="%{getText('label.modCliente.dni')}" value="%{cliente.dni}" disabled="true"/>
 		<s:textfield name="label.nombre"
-			label="%{getText('label.modCliente.nombre')}" />
+			label="%{getText('label.modCliente.nombre')}" value="%{cliente.nombre}"/>
 		<s:textfield name="labe.direccion"
-			label="%{getText('label.modCliente.direccion')}" />
+			label="%{getText('label.modCliente.direccion')}" value="%{cliente.direccion}"/>
 		<s:textfield name="label.email"
-			label="%{getText('label.modCliente.email')}" />
+			label="%{getText('label.modCliente.email')}" value="%{cliente.email}"/>
 		<br>
 		<s:submit value="%{getText('label.modCliente.guardar')}" align="left" />
 		<s:submit value="%{getText('label.modCliente.cancelar')}" align="left" />
