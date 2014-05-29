@@ -6,7 +6,7 @@
 	    <title><s:text name="label.languagedesigner.subject"/></title>
 	</head>
 	<body>
-		<s:form action="searchClient" method="GET">
+		<s:form action="searchClient" method="POST">
 			<div class="titleDiv"><s:text name="application.idCliente.title"/></div>
 			<h1><s:text name="label.idCliente.subject"/></h1>
 			<br>

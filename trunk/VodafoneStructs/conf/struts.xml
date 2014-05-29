@@ -37,6 +37,10 @@
         <action name="showLineasClient" class="acciones.LineasAction">
 			<result>/jsp/lineasCliente.jsp</result>
         </action>
+                
+        <action name="filterLineas" class="acciones.LineasAction">
+			<result>/jsp/lineasCliente.jsp</result>
+        </action>
         
         <action name="showModCliente" class="acciones.ModificarClienteAction" method="doShow">
             <result>/jsp/modCliente.jsp</result>
