@@ -6,7 +6,7 @@
 	    <title><s:text name="label.languagedesigner.subject"/></title>
 	</head>
 	<body>
-		<s:form action="searchClient" method="GET">
+		<s:form action="searchClient" method="POST">
 			<div class="titleDiv"><s:text name="application.idCliente.title"/></div>
 			<h1><s:text name="label.idCliente.subject"/></h1>
 			<br>
@@ -41,7 +41,7 @@
 		        <th><s:text name="label.cambiar"/></th>
 		        <th><s:text name="label.promocion"/></th>
 		        <th><s:text name="label.tarifaVoz"/></th>
-		        <th><s:text name="label.trifaDatos"/></th>
+		        <th><s:text name="label.tarifaDatos"/></th>
 		        <th><s:text name="label.facturas"/></th>
 		        <th></th>
 		    </tr>
@@ -54,21 +54,31 @@
 					<s:param name="telefono" value="telefono"/>
 					<s:param name="dni" value="dni"/>
 				</s:url>
+				<s:url id="changeStatus" action="filterLineas!doChangeStatus.action">
+					<s:param name="dni" value="dni"/>
+					<s:param name="telefono" value="telefono"/>
+				</s:url>
 		        <tr class="<s:if test="#status.even">even</s:if><s:else>odd</s:else>">
 		            <td class="nowrap"><s:property value="dni"/></td>
 		            <td class="nowrap"><s:property value="telefono"/></td>
 		            <td class="nowrap"><s:property value="antiguedad"/></td>
 		            <td class="nowrap"><s:property value="activa"/></td>
-		            <td class="nowrap"><s:property value="cambiar"/></td>
+		            <td class="nowrap"><s:if test="%{activa==true}"><s:a href="%{changeStatus}">Desactivar</s:a></s:if>
+		            	<s:else><s:a href="%{changeStatus}">Activar</s:a></s:else></td>
 		            <td class="nowrap"><s:property value="promocion"/></td>
 		            <td class="nowrap"><s:property value="tarifaVoz"/></td>
 		            <td class="nowrap"><s:property value="tarifaDatos"/></td>
-		            <td class="nowrap"><s:a href="%{viewFacturas}"><s:text name="1"/></s:a></td>
+		            <td class="nowrap"><s:a href="%{viewFacturas}"><s:text name="%{numFacturas[telefono]}"/></s:a></td>
 		            <td class="nowrap"><s:a href="%{editLineas}"><s:text name="label.modificar"/></s:a></td>
 		        </tr>
 		    </s:iterator>
 		</table>
 		<br>
-		<s:text name="label.modificarLineas"/>
+		<s:url id="filterLineas" action="filterLineas!doFilter.action">
+			<s:param name="dni" value="dni"/>
+		</s:url>
+		<s:a href="%{filterLineas}">
+			<s:text name="label.modificarLineas"/>
+		</s:a>
 	</body>
 </html>

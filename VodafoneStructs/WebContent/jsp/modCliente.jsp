@@ -32,8 +32,8 @@
 		<s:textfield name="email"
 			label="%{getText('label.modCliente.email')}" value="%{cliente.email}"/>
 		<br>
-		<s:submit value="%{getText('label.modCliente.guardar')}" align="left" />
-		<s:submit value="%{getText('label.modCliente.cancelar')}" align="left" />
+		<s:submit type="button" value="%{getText('label.modCliente.guardar')}" />
+		<s:submit type="button" value="%{getText('label.modCliente.cancelar')}" onclick="history.go(-1);return false;"/>
 	</s:form>
 </body>
 </html>
