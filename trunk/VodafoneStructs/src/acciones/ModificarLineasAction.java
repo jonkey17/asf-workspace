@@ -13,10 +13,12 @@ public class ModificarLineasAction extends ActionSupport implements Preparable {
 
 	private Lineas linea;
 	private List<Clientes> clientes;
+	private String telefono;
+	private String dni;
 	
 	@Override
 	public void prepare() throws Exception {
-		linea= VodafoneDAO.getLinea("666111000");
+		linea= VodafoneDAO.getLinea(telefono);
 		//linea=new Lineas("6100000", "asd", true, "12", "123", "asd", "234123");
 		clientes= VodafoneDAO.getClientes();
 	}
@@ -54,6 +56,22 @@ public class ModificarLineasAction extends ActionSupport implements Preparable {
 
 	public void setClientes(List<Clientes> clientes) {
 		this.clientes = clientes;
+	}
+	
+	public String getTelefono() {
+		return telefono;
+	}
+	
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+	
+	public String getDni() {
+		return dni;
+	}
+	
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
 }

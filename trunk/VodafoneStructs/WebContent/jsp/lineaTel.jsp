@@ -8,7 +8,10 @@
 	<body>
 		<div class="titleDiv"><s:text name="application.facturaTel.title"/></div>
 		<h1><s:text name="label.lineaTel.subject"/></h1>
-		<s:form action="editLineasTel" method="POST">
+		<s:url id="showLineas" action="editLineasTel.action">
+			<s:param name="dni" value="%{dni}"/>
+		</s:url>
+		<s:form action="%{showLineas}" method="POST">
 			<tr>
 				<td colspan="2">
 					<s:actionerror />
@@ -25,12 +28,9 @@
 			<s:textfield name="linea.tarifaDatos" label="%{getText('label.tarifaDatos')}" value="%{linea.tarifaDatos}"/>
 			<%--<s:textfield name="linea.dni" label="%{getText('label.cliente')}" value="%{linea.dni}"/>--%>
 			<s:select name="linea.dni" label="%{getText('label.cliente')}" list="clientes" listKey="dni" listValue="nombre" headerKey="-1" value="%{linea.dni}"/>
-			<s:submit value="%{getText('button.label.guardar')}" align="right"/>
-			<tr>
-				<td colspan="2" align="right">
-					<input type="button" onclick="location.href('facturasTel.action');" value="Cancel" /><%--Aqui poner el action de ellos --%>
-				</td>
-			</tr>
+			<s:hidden name="telefono" value="%{telefono}"></s:hidden>
+			<s:submit value="%{getText('label.modCliente.guardar')}" align="left" />
+			<s:submit value="%{getText('label.modCliente.cancelar')}" align="left" />
 		</s:form>
 		
 	</body>
