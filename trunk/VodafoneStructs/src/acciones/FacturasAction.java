@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.Preparable;
 
 public class FacturasAction extends ActionSupport implements Preparable {
 
+	private static final long serialVersionUID = 8056869090519733296L;
 	private List<Facturas> listaFacturas = null;
 	private Lineas linea=null;
 	

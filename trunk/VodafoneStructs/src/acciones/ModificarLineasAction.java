@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.Preparable;
 
 public class ModificarLineasAction extends ActionSupport implements Preparable {
 
+	private static final long serialVersionUID = -1782503946953346037L;
 	private Lineas linea;
 	private List<Clientes> clientes;
 	private String telefono;
