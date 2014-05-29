@@ -8,7 +8,6 @@
 	<body>
 		<div class="titleDiv"><s:text name="application.facturaTel.title"/></div>
 		<h1><s:text name="label.lineaTel.subject"/></h1>
-		<br/>
 		<s:form action="editLineasTel" method="POST">
 			<tr>
 				<td colspan="2">
@@ -27,7 +26,12 @@
 			<%--<s:textfield name="linea.dni" label="%{getText('label.cliente')}" value="%{linea.dni}"/>--%>
 			<s:select name="linea.dni" label="%{getText('label.cliente')}" list="clientes" listKey="dni" listValue="nombre" headerKey="-1" value="%{linea.dni}"/>
 			<s:submit value="%{getText('button.label.guardar')}" align="right"/>
+			<tr>
+				<td colspan="2" align="right">
+					<input type="button" onclick="location.href('facturasTel.action');" value="Cancel" /><%--Aqui poner el action de ellos --%>
+				</td>
+			</tr>
 		</s:form>
-		<input type="button" onclick="location.href('facturasTel.action');" value="Cancel"/><%--Aqui poner el action de ellos --%>
+		
 	</body>
 </html>
