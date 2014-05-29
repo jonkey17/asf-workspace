@@ -21,6 +21,7 @@ public class ModificarClienteAction extends ActionSupport implements Preparable 
 	}
 
 	public String execute() throws Exception {
+		System.out.println("Cliente modificado");
 		System.out.println(cliente.toString());
 		VodafoneDAO.updateCliente(cliente.getDni(), getNombre(),
 				getDireccion(), getEmail());
