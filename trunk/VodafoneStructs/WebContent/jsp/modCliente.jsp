@@ -20,7 +20,9 @@
 	</s:url>
 	<s:form action="%{showLineas}" method="POST">
 		<tr>
-			<td colspan="2"><s:actionerror /> <!--<s:fielderror />--></td>
+			<td colspan="2">
+				<s:actionerror />
+			</td>
 		</tr>
 
 		<s:textfield name="dni"

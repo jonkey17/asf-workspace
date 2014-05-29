@@ -23,7 +23,7 @@
 		<s:text name="%{getText('label.string.dni')}"></s:text>
 		<s:text name="%{cliente.dni}"></s:text>
 		<s:text name="%{getText('label.string.nombre')}"></s:text>
-		<s:text name="%{cliente.nombre}"></s:text>
+		<s:text name="%{nombre}"></s:text>
 		
 		<s:url id="modCliente" action="showModCliente.action">
 			<s:param name="dni" value="%{cliente.dni}"/>

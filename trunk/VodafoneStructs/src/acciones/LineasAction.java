@@ -18,12 +18,14 @@ public class LineasAction extends ActionSupport implements Preparable {
 	private String dni = null;
 	private Clientes cliente = null;
 	private String telefono = null;
+	private String nombre = null;
 	private HashMap<String, Integer> numFacturas = null;
 
 	@Override
 	public void prepare() throws Exception {
 		System.out.println("Prepare lineas");
 		cliente = VodafoneDAO.getCliente(dni);
+		nombre = cliente.getNombre();
 		lineas = VodafoneDAO.getLineasByCliente(dni);
 		System.out.println("Lineas: " + lineas.size());
 		numFacturas = new HashMap<String, Integer>();
@@ -31,6 +33,14 @@ public class LineasAction extends ActionSupport implements Preparable {
 			numFacturas.put(l.getTelefono(),
 					VodafoneDAO.getFacturasByLinea(l.getTelefono()).size());
 		}
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String doFilter() {
@@ -43,12 +53,14 @@ public class LineasAction extends ActionSupport implements Preparable {
 		return SUCCESS;
 	}
 
-	public String doChangeStatus() {
+	public String doChangeStatus() throws Exception {
+		System.out.println("Change status");
 		Lineas linea = VodafoneDAO.getLinea(telefono);
 		linea.setActiva(!linea.isActiva());
 		VodafoneDAO.updateLinea(linea.getTelefono(), linea.getAntiguedad(),
 				linea.isActiva(), linea.getPromocion(), linea.getTarifaDatos(),
 				linea.getTarifaVoz(), linea.getDni());
+		prepare();
 		return SUCCESS;
 	}
 
