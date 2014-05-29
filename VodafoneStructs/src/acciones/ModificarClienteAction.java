@@ -10,13 +10,14 @@ public class ModificarClienteAction extends ActionSupport implements Preparable 
 
 	private static final long serialVersionUID = 580983934707398274L;
 	private Clientes cliente;
+	private String dni;
 	private String nombre;
 	private String direccion;
 	private String email;
 
 	@Override
 	public void prepare() throws Exception {
-		cliente = VodafoneDAO.getCliente("222");
+		cliente = VodafoneDAO.getCliente(dni);
 	}
 
 	public String execute() throws Exception {
@@ -38,6 +39,13 @@ public class ModificarClienteAction extends ActionSupport implements Preparable 
 		this.cliente = cliente;
 	}
 	
+	public String getDni() {
+		return dni;
+	}
+	
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
 
 	public String getNombre() {
 		return nombre;

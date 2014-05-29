@@ -29,7 +29,10 @@
 		    </tr>
 		</table>
 		<br/>
-		<a href="showLineasTel.action">Volver al listado de líneas</a><%--Aqui poner action de ellos --%>
+		<s:url id="viewLineas" action="searchClient.action">
+			<s:param name="dni" value="dni"/>
+		</s:url>
+		<s:a href="%{viewLineas}">Volver al listado de líneas</s:a>
 		<br/>
 		<br/>
 		<br/>

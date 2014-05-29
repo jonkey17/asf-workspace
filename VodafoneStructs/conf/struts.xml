@@ -17,7 +17,7 @@
         <action name="editLineasTel" class="acciones.ModificarLineasAction">
             <result  name="input">/jsp/lineaTel.jsp</result>
 			<result  name="error">/jsp/lineaTel.jsp</result>	
-			<result>/jsp/facturaTel.jsp</result> <!-- Aqui poner el jsp de ellos -->
+			<result type="chain"> <param name="actionName">showLineasClient</param></result>
         </action>
         
         <action name="facturasTel" class="acciones.FacturasAction">
@@ -43,8 +43,7 @@
         </action>
         
         <action name="editModCliente" class="acciones.ModificarClienteAction">
-            <result  name="input">/jsp/modCliente.jsp</result>
-            <result>/jsp/idCliente.jsp</result>
+            <result type="chain"> <param name="actionName">searchClient</param></result>
         </action>
         
     </package>

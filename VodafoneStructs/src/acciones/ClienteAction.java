@@ -22,7 +22,6 @@ public class ClienteAction extends ActionSupport{
 			addActionError("El usuario no existe");
             return ERROR;
 		}else{
-			cliente = VodafoneDAO.getCliente(dni);
 			System.out.println(cliente.toString());
 			return SUCCESS;
 		}

@@ -14,7 +14,8 @@ public class FacturasAction extends ActionSupport implements Preparable {
 	private List<Facturas> listaFacturas = null;
 	private Lineas linea=null;
 	
-	private String numeroTel="666111000";
+	private String telefono;
+	private String dni;
 	
 	public List<Facturas> getListaFacturas() {
 		return listaFacturas;
@@ -32,23 +33,31 @@ public class FacturasAction extends ActionSupport implements Preparable {
 		this.linea = linea;
 	}
 
-	public String getNumeroTel() {
-		return numeroTel;
+	public String getTelefono() {
+		return telefono;
+	}
+	
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 
-	public void setNumeroTel(String numeroTel) {
-		this.numeroTel = numeroTel;
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
-
+	
+	public String getDni() {
+		return dni;
+	}
+	
 	@Override
 	public void prepare() throws Exception {
 		
 		this.listaFacturas = new java.util.ArrayList<Facturas>();
 		//listaFacturas.add(new Facturas(1, "12-12-12", "sdf", 12, "6100001"));
 		//listaFacturas.add(new Facturas(2, "12-1-1", "saa", 12, "6666666"));
-		listaFacturas=VodafoneDAO.getFacturasByLinea(numeroTel);
+		listaFacturas=VodafoneDAO.getFacturasByLinea(telefono);
 		
-		linea= VodafoneDAO.getLinea(numeroTel);
+		linea= VodafoneDAO.getLinea(telefono);
 		//linea=new Lineas("6100001", "asd", true, "12", "123", "asd", "234123");
 	}
 
