@@ -6,13 +6,13 @@
 	    <title><s:text name="label.languagedesigner.subject"/></title>
 	</head>
 	<body>
-		<s:form action="searchClient" method="POST">
+		<s:form action="searchClient" method="POST" validate="true">
 			<div class="titleDiv"><s:text name="application.idCliente.title"/></div>
 			<h1><s:text name="label.idCliente.subject"/></h1>
 			<br>
 			<table class="borderAll">
 				<tr>			      
-			        <td><s:textfield name="dni" label="%{getText('label.dni')}"/></td>
+			        <td><s:textfield name="dni" label="%{getText('label.dni')}" key="dni"/></td>
 			        <th><s:submit value="%{getText('label.button')}" align="right"/></th>
 			    </tr>
 			</table>

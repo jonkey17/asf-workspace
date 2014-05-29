@@ -25,6 +25,7 @@
         </action>
 
         <action name="showSearchClient" class="acciones.ClienteAction" method="doShow">
+            <result  name="input">/jsp/idCliente.jsp</result>
 			<result>/jsp/idCliente.jsp</result>
         </action>
         
