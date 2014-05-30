@@ -17,7 +17,7 @@
 					<s:actionerror />
 				</td>
 			</tr>
-			<s:textfield name="linea.telefono" label="%{getText('label.telefono')}" value="%{linea.telefono}"/>
+			<s:textfield name="linea.telefono" label="%{getText('label.telefono')}" value="%{linea.telefono}" disabled="true" />
 			<s:textfield name="linea.antiguedad" label="%{getText('label.antiguedad')}" value="%{linea.antiguedad}"/>
 			<s:select name="linea.activa" label="%{getText('label.activa')}" list="{'true','false'}" headerKey="-1" value="%{linea.activa}"/>
 			<s:textfield name="linea.promocion" label="%{getText('label.promocion')}" value="%{linea.promocion}"/>
