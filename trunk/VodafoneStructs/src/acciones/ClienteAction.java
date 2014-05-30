@@ -19,7 +19,7 @@ public class ClienteAction extends ActionSupport{
 			cliente = VodafoneDAO.getCliente(dni);
 		}else{
 			addFieldError("dni", "El dni no puede quedar en blanco");
-			return ERROR;
+			return INPUT;
 		}
 		if(cliente == null){
 			addActionError("El usuario no existe");

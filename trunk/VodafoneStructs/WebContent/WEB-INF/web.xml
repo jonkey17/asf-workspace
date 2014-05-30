@@ -13,6 +13,7 @@
     </filter-mapping>
 
   <welcome-file-list>
-  		<welcome-file>showSearchClient.action</welcome-file>
+  		<welcome-file>/index.html</welcome-file>
+  		<welcome-file>index.html</welcome-file>
   </welcome-file-list>
 </web-app>
