@@ -10,6 +10,7 @@
 		<h1><s:text name="label.lineaTel.subject"/></h1>
 		<s:url id="showLineas" action="editLineasTel.action">
 			<s:param name="dni" value="%{dni}"/>
+			<s:param name="telefono" value="%{telefono}"/>
 		</s:url>
 		<s:form action="%{showLineas}" method="POST">
 			<tr>
