@@ -20,6 +20,7 @@ public class Singleton {
 
 	public static void close() {
 		emf.close();
+		emf=null;
 	}
 
 }

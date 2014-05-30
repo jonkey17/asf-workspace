@@ -15,24 +15,28 @@ public class VodafoneDAO {
 	public static Lineas getLinea(String telf) {
 		LineaFacade lineaFacade = new LineaFacade();
 		Lineas linea = lineaFacade.find(telf);
+		Singleton.close();
 		return linea;
 	}
 
 	public static List<Lineas> getLineas() {
 		LineaFacade lineaFacade = new LineaFacade();
 		List<Lineas> listaLineas = lineaFacade.findAll();
+		Singleton.close();
 		return listaLineas;
 	}
 
 	public static List<Lineas> getLineasByEstado(boolean activa) {
 		LineaFacade lineaFacade = new LineaFacade();
 		List<Lineas> listaLineas = lineaFacade.findAllByEstado(activa);
+		Singleton.close();
 		return listaLineas;
 	}
 
 	public static List<Lineas> getLineasByCliente(String dni) {
 		LineaFacade lineaFacade = new LineaFacade();
 		List<Lineas> listaLineas = lineaFacade.findAllByNombre(dni);
+		Singleton.close();
 		return listaLineas;
 	}
 
@@ -41,6 +45,7 @@ public class VodafoneDAO {
 		LineaFacade lineaFacade = new LineaFacade();
 		List<Lineas> listaLineas = lineaFacade.findAllByNombreAndEstado(activa,
 				dni);
+		Singleton.close();
 		return listaLineas;
 	}
 
@@ -50,6 +55,7 @@ public class VodafoneDAO {
 		LineaFacade lineaFacade = new LineaFacade();
 		lineaFacade.edit(new Lineas(telf, newFecha, newEstado, newTVoz,
 				newTDatos, newPromo, newDni));
+		Singleton.close();
 	}
 
 	public static void activateLinea(String telf, boolean activa) {
@@ -58,17 +64,20 @@ public class VodafoneDAO {
 
 		LineaFacade lineaFacade = new LineaFacade();
 		lineaFacade.edit(linea);
+		Singleton.close();
 	}
 
 	public static Clientes getCliente(String dni) {
 		ClienteFacade clienteFacade = new ClienteFacade();
 		Clientes cliente = clienteFacade.find(dni);
+		Singleton.close();
 		return cliente;
 	}
 
 	public static List<Clientes> getClientes() {
 		ClienteFacade clienteFacade = new ClienteFacade();
 		List<Clientes> listaClientes = clienteFacade.findAll();
+		Singleton.close();
 		return listaClientes;
 	}
 
@@ -76,17 +85,20 @@ public class VodafoneDAO {
 			String newDir, String newEmail) {
 		ClienteFacade clienteFacade = new ClienteFacade();
 		clienteFacade.edit(new Clientes(dni, newNombre, newDir, newEmail));
+		Singleton.close();
 	}
 
 	public static Facturas getFactura(int id) {
 		FacturaFacade facturaFacade = new FacturaFacade();
 		Facturas factura = facturaFacade.find(id);
+		Singleton.close();
 		return factura;
 	}
 
 	public static List<Facturas> getFacturasByLinea(String telf) {
 		FacturaFacade facturaFacade = new FacturaFacade();
 		List<Facturas> listaFacturas = facturaFacade.findAllByLinea(telf);
+		Singleton.close();
 		return listaFacturas;
 	}
 
