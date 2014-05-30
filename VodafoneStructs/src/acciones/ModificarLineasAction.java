@@ -19,8 +19,8 @@ public class ModificarLineasAction extends ActionSupport implements Preparable {
 	
 	@Override
 	public void prepare() throws Exception {
+		System.out.println(telefono);
 		linea= VodafoneDAO.getLinea(telefono);
-		//linea=new Lineas("6100000", "asd", true, "12", "123", "asd", "234123");
 		clientes= VodafoneDAO.getClientes();
 	}
 	
@@ -35,6 +35,7 @@ public class ModificarLineasAction extends ActionSupport implements Preparable {
             return ERROR;
 		}else{
 			System.out.println(linea.toString());
+			System.out.println(dni);
 			VodafoneDAO.updateLinea(linea.getTelefono(), linea.getAntiguedad(), linea.isActiva(), linea.getPromocion(), linea.getTarifaDatos(), linea.getTarifaVoz(), linea.getDni());
 			return SUCCESS;
 		}
