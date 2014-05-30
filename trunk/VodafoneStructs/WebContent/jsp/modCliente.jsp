@@ -15,18 +15,16 @@
 	</h1>
 	<br>
 	
-	<s:url id="showLineas" action="editModCliente.action">
-			<s:param name="dni" value="%{dni}"/>
-	</s:url>
-	<s:form action="%{showLineas}" method="POST">
+	<s:form action="editModCliente.action" method="POST">
 		<tr>
 			<td colspan="2">
 				<s:actionerror />
 			</td>
 		</tr>
 
-		<s:textfield name="dni"
+		<s:textfield name="dniNoHidden"
 			label="%{getText('label.modCliente.dni')}" value="%{cliente.dni}" disabled="true"/>
+		<s:hidden name="dni" value="%{cliente.dni}"></s:hidden>			
 		<s:textfield name="nombre"
 			label="%{getText('label.modCliente.nombre')}" value="%{cliente.nombre}"/>
 		<s:textfield name="direccion"
