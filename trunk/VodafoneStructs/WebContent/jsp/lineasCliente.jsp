@@ -64,8 +64,8 @@
 		            <td class="nowrap"><s:property value="antiguedad"/></td>
 		            <td class="nowrap"><s:if test="%{activa}"><s:text name="label.si"></s:text></s:if>
 		            	<s:else><s:text name="label.no"></s:text></s:else></td>
-		            <td class="nowrap"><s:if test="%{activa}"><s:a href="%{changeStatus}">Desactivar</s:a></s:if>
-		            	<s:else><s:a href="%{changeStatus}">Activar</s:a></s:else></td>
+		            <td class="nowrap"><s:if test="%{activa}"><s:a href="%{changeStatus}"><s:text name="label.inactiva"></s:text></s:a></s:if>
+		            	<s:else><s:a href="%{changeStatus}"><s:text name="label.activa"></s:text></s:a></s:else></td>
 		            <td class="nowrap"><s:property value="promocion"/></td>
 		            <td class="nowrap"><s:property value="tarifaVoz"/></td>
 		            <td class="nowrap"><s:property value="tarifaDatos"/></td>
