@@ -52,14 +52,9 @@ public class FacturasAction extends ActionSupport implements Preparable {
 	
 	@Override
 	public void prepare() throws Exception {
-		
 		this.listaFacturas = new java.util.ArrayList<Facturas>();
-		//listaFacturas.add(new Facturas(1, "12-12-12", "sdf", 12, "6100001"));
-		//listaFacturas.add(new Facturas(2, "12-1-1", "saa", 12, "6666666"));
 		listaFacturas=VodafoneDAO.getFacturasByLinea(telefono);
-		
 		linea= VodafoneDAO.getLinea(telefono);
-		//linea=new Lineas("6100001", "asd", true, "12", "123", "asd", "234123");
 	}
 
 }

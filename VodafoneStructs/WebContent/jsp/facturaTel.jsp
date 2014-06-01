@@ -32,7 +32,7 @@
 		<s:url id="viewLineas" action="searchClient.action">
 			<s:param name="dni" value="dni"/>
 		</s:url>
-		<s:a href="%{viewLineas}">Volver al listado de líneas</s:a>
+		<s:a href="%{viewLineas}"><s:text name="label.volver.lineas"/></s:a>
 		<br/>
 		<br/>
 		<br/>
